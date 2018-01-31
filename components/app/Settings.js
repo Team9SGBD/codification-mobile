@@ -15,3 +15,8 @@ export default class Settings {
     return <Text style={{ color: style.color, fontSize: 35 }}>Parametres</Text>;
   }
 }
+
+const navigationOptions = {
+  headerStyle: style.header,
+  headerTitleStyle: style.headerTitle
+};

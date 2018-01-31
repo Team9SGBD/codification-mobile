@@ -15,3 +15,8 @@ export default class Settings {
     );
   }
 }
+
+const navigationOptions = {
+  headerStyle: style.header,
+  headerTitleStyle: style.headerTitle
+};
