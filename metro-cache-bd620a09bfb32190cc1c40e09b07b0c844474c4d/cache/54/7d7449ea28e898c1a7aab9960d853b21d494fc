@@ -1,0 +1,162 @@
+__d(function (global, require, module, exports, _dependencyMap) {
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+
+  var _react2 = require(_dependencyMap[0], "react");
+
+  var _react3 = _interopRequireDefault(_react2);
+
+  var _index = require(_dependencyMap[1], "./../node_modules/react-transform-hmr/lib/index.js");
+
+  var _index2 = _interopRequireDefault(_index);
+
+  var _jsxFileName = "/Users/Papi/Documents/dev/React Native/codification/components/Login.js";
+
+  var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+  var _reactNative = require(_dependencyMap[2], "react-native");
+
+  var _Style = require(_dependencyMap[3], "../Style");
+
+  var _Style2 = _interopRequireDefault(_Style);
+
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+  function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+  function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+  var _components = {
+    Login: {
+      displayName: "Login"
+    }
+  };
+
+  var _node_modulesReactTransformHmrLibIndexJs2 = (0, _index2.default)({
+    filename: "/Users/Papi/Documents/dev/React Native/codification/components/Login.js",
+    components: _components,
+    locals: [module],
+    imports: [_react3.default]
+  });
+
+  function _wrapComponent(id) {
+    return function (Component) {
+      return _node_modulesReactTransformHmrLibIndexJs2(Component, id);
+    };
+  }
+
+  var Login = _wrapComponent("Login")(function (_React$Component) {
+    _inherits(Login, _React$Component);
+
+    function Login() {
+      _classCallCheck(this, Login);
+
+      return _possibleConstructorReturn(this, (Login.__proto__ || Object.getPrototypeOf(Login)).apply(this, arguments));
+    }
+
+    _createClass(Login, [{
+      key: "connect",
+      value: function connect() {
+        console.log("validation connexion");
+      }
+    }, {
+      key: "goToRegister",
+      value: function goToRegister() {
+        console.log("page d'inscription");
+      }
+    }, {
+      key: "render",
+      value: function render() {
+        return _react3.default.createElement(
+          _reactNative.View,
+          {
+            style: _Style2.default.view,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 14
+            }
+          },
+          _react3.default.createElement(
+            _reactNative.View,
+            {
+              style: _Style2.default.loginBox,
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 15
+              }
+            },
+            _react3.default.createElement(
+              _reactNative.Text,
+              {
+                style: {
+                  fontSize: 27,
+                  color: "white"
+                },
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 16
+                }
+              },
+              "Login"
+            ),
+            _react3.default.createElement(_reactNative.TextInput, {
+              placeholder: "Email",
+              style: _Style2.default.textInput,
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 17
+              }
+            }),
+            _react3.default.createElement(_reactNative.TextInput, {
+              placeholder: "Mot de passe",
+              style: _Style2.default.textInput,
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 18
+              }
+            }),
+            _react3.default.createElement(
+              _reactNative.View,
+              {
+                style: {
+                  margin: 7
+                },
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 19
+                }
+              },
+              _react3.default.createElement(_reactNative.Button, {
+                onPress: this.connect,
+                title: "Me connecter",
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 20
+                }
+              })
+            )
+          ),
+          _react3.default.createElement(_reactNative.Button, {
+            onPress: this.goToRegister,
+            title: "Inscription",
+            color: _Style2.default.color,
+            style: {
+              marginTop: 10
+            },
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 23
+            }
+          })
+        );
+      }
+    }]);
+
+    return Login;
+  }(_react3.default.Component));
+
+  exports.default = Login;
+});

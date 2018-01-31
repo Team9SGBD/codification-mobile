@@ -1,0 +1,168 @@
+__d(function (global, require, module, exports, _dependencyMap) {
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+
+  var _react2 = require(_dependencyMap[0], "react");
+
+  var _react3 = _interopRequireDefault(_react2);
+
+  var _index = require(_dependencyMap[1], "./../../node_modules/react-transform-hmr/lib/index.js");
+
+  var _index2 = _interopRequireDefault(_index);
+
+  var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+  var _class,
+      _temp,
+      _jsxFileName = "/Users/Papi/Documents/dev/React Native/codification/components/room/Row.js";
+
+  var _reactNative = require(_dependencyMap[2], "react-native");
+
+  var _propTypes = require(_dependencyMap[3], "prop-types");
+
+  var _propTypes2 = _interopRequireDefault(_propTypes);
+
+  var _Style = require(_dependencyMap[4], "../../Style");
+
+  var _Style2 = _interopRequireDefault(_Style);
+
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+  function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+  function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+  var _components = {
+    Row: {
+      displayName: "Row"
+    }
+  };
+
+  var _node_modulesReactTransformHmrLibIndexJs2 = (0, _index2.default)({
+    filename: "/Users/Papi/Documents/dev/React Native/codification/components/room/Row.js",
+    components: _components,
+    locals: [module],
+    imports: [_react3.default]
+  });
+
+  function _wrapComponent(id) {
+    return function (Component) {
+      return _node_modulesReactTransformHmrLibIndexJs2(Component, id);
+    };
+  }
+
+  var Row = _wrapComponent("Row")((_temp = _class = function (_React$Component) {
+    _inherits(Row, _React$Component);
+
+    function Row() {
+      _classCallCheck(this, Row);
+
+      return _possibleConstructorReturn(this, (Row.__proto__ || Object.getPrototypeOf(Row)).apply(this, arguments));
+    }
+
+    _createClass(Row, [{
+      key: "floor",
+      value: function floor() {
+        return _react3.default.createElement(
+          _reactNative.Text,
+          {
+            style: [style.white, style.bold],
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 13
+            }
+          },
+          this.props.floor.id
+        );
+      }
+    }, {
+      key: "goToDetails",
+      value: function goToDetails() {
+        console.log("codification success");
+      }
+    }, {
+      key: "render",
+      value: function render() {
+        return _react3.default.createElement(
+          _reactNative.View,
+          {
+            style: style.view,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 22
+            }
+          },
+          _react3.default.createElement(
+            _reactNative.View,
+            {
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 23
+              }
+            },
+            _react3.default.createElement(
+              _reactNative.Text,
+              {
+                style: {
+                  fontSize: 10
+                },
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 24
+                }
+              },
+              this.floor()
+            )
+          ),
+          _react3.default.createElement(_reactNative.Button, {
+            onPress: this.goToDetails,
+            title: "Codifier",
+            color: "green",
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 26
+            }
+          })
+        );
+      }
+    }]);
+
+    return Row;
+  }(_react3.default.Component), _class.propTypes = {
+    floor: _propTypes2.default.object,
+    index: _propTypes2.default.number
+  }, _temp));
+
+  exports.default = Row;
+
+  var style = _reactNative.StyleSheet.create({
+    white: {
+      color: "white"
+    },
+    bold: {
+      fontWeight: "bold"
+    },
+    view: {
+      backgroundColor: _Style2.default.color,
+      borderWidth: 0,
+      borderBottomWidth: 1,
+      borderBottomColor: _Style2.default.color,
+      paddingHorizontal: 20,
+      paddingVertical: 10,
+      flex: 1,
+      flexDirection: "row",
+      justifyContent: "space-between"
+    },
+    firstTemp: {
+      fontSize: 35
+    },
+    temp: {
+      color: "white",
+      fontWeight: "bold",
+      fontSize: 22
+    }
+  });
+});

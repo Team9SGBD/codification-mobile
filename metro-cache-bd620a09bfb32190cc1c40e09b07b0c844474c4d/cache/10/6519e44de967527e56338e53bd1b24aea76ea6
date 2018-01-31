@@ -1,0 +1,110 @@
+__d(function (global, require, module, exports, _dependencyMap) {
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+
+  var _react2 = require(_dependencyMap[0], "react");
+
+  var _react3 = _interopRequireDefault(_react2);
+
+  var _index = require(_dependencyMap[1], "./../node_modules/react-transform-hmr/lib/index.js");
+
+  var _index2 = _interopRequireDefault(_index);
+
+  var _jsxFileName = "/Users/Papi/Documents/dev/React Native/codification/components/Home.js";
+
+  var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+  var _reactNative = require(_dependencyMap[2], "react-native");
+
+  var _Style = require(_dependencyMap[3], "../Style");
+
+  var _Style2 = _interopRequireDefault(_Style);
+
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+  function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+  function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+  var _components = {
+    Home: {
+      displayName: "Home"
+    }
+  };
+
+  var _node_modulesReactTransformHmrLibIndexJs2 = (0, _index2.default)({
+    filename: "/Users/Papi/Documents/dev/React Native/codification/components/Home.js",
+    components: _components,
+    locals: [module],
+    imports: [_react3.default]
+  });
+
+  function _wrapComponent(id) {
+    return function (Component) {
+      return _node_modulesReactTransformHmrLibIndexJs2(Component, id);
+    };
+  }
+
+  var Home = _wrapComponent("Home")(function (_React$Component) {
+    _inherits(Home, _React$Component);
+
+    function Home() {
+      _classCallCheck(this, Home);
+
+      return _possibleConstructorReturn(this, (Home.__proto__ || Object.getPrototypeOf(Home)).apply(this, arguments));
+    }
+
+    _createClass(Home, [{
+      key: "render",
+      value: function render() {
+        return _react3.default.createElement(
+          _reactNative.View,
+          {
+            style: _Style2.default.mainView,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 8
+            }
+          },
+          _react3.default.createElement(
+            _reactNative.Text,
+            {
+              style: _Style2.default.homeText,
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 9
+              }
+            },
+            "CODIFICATION"
+          ),
+          _react3.default.createElement(_reactNative.Image, {
+            source: require(_dependencyMap[4], "../icons/logo.png"),
+            style: _Style2.default.icon,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 10
+            }
+          }),
+          _react3.default.createElement(
+            _reactNative.Text,
+            {
+              style: [_Style2.default.homeText, _Style2.default.bold],
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 11
+              }
+            },
+            "ESP"
+          )
+        );
+      }
+    }]);
+
+    return Home;
+  }(_react3.default.Component));
+
+  exports.default = Home;
+});
