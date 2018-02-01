@@ -2,7 +2,7 @@ import React from "react";
 import { Text, Image } from "react-native";
 import style from "../../Style";
 
-export default class Settings {
+export default class Settings extends React.Component {
   static navigationOptions = {
     title: "Parametres",
     tabBarIcon: () => {
@@ -11,6 +11,7 @@ export default class Settings {
       );
     }
   };
+
   render() {
     return <Text style={{ color: style.color, fontSize: 35 }}>Parametres</Text>;
   }

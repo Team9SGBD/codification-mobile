@@ -2,7 +2,7 @@ import React from "react";
 import { Text, Image } from "react-native";
 import style from "../../Style";
 
-export default class Settings {
+export default class ReservationState extends React.Component {
   static navigationOptions = {
     title: "Etat reservation",
     tabBarIcon: () => {

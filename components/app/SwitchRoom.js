@@ -2,7 +2,7 @@ import React from "react";
 import { Text, Image } from "react-native";
 import style from "../../Style";
 
-export default class Settings {
+export default class SwitchRooms extends React.Component {
   static navigationOptions = {
     title: "Echange de chambres",
     tabBarIcon: () => {

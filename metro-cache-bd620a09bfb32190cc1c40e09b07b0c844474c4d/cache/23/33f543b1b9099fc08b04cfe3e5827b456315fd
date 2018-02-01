@@ -42,6 +42,17 @@ __d(function (global, require, module, exports, _dependencyMap) {
     },
     bold: {
       fontWeight: "bold"
+    },
+    header: {
+      backgroundColor: blue
+    },
+    headerTitle: {
+      color: "#ffffff",
+      paddingTop: 5
+    },
+    button: {
+      backgroundColor: blue,
+      color: "#ffffff"
     }
   };
 });

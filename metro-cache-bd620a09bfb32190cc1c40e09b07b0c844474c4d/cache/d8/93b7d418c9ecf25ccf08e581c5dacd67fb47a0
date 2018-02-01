@@ -1,0 +1,143 @@
+__d(function (global, require, module, exports, _dependencyMap) {
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+
+  var _react2 = require(_dependencyMap[0], "react");
+
+  var _react3 = _interopRequireDefault(_react2);
+
+  var _index = require(_dependencyMap[1], "./../../node_modules/react-transform-hmr/lib/index.js");
+
+  var _index2 = _interopRequireDefault(_index);
+
+  var _jsxFileName = "/Users/Papi/Documents/dev/React Native/codification/components/app/Global.js";
+
+  var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+  var _RoomList = require(_dependencyMap[2], "./RoomList");
+
+  var _RoomList2 = _interopRequireDefault(_RoomList);
+
+  var _Settings = require(_dependencyMap[3], "./Settings");
+
+  var _Settings2 = _interopRequireDefault(_Settings);
+
+  var _SwitchRoom = require(_dependencyMap[4], "./SwitchRoom");
+
+  var _SwitchRoom2 = _interopRequireDefault(_SwitchRoom);
+
+  var _ReservationState = require(_dependencyMap[5], "./ReservationState");
+
+  var _ReservationState2 = _interopRequireDefault(_ReservationState);
+
+  var _reactNative = require(_dependencyMap[6], "react-native");
+
+  var _reactNavigation = require(_dependencyMap[7], "react-navigation");
+
+  var _Style = require(_dependencyMap[8], "../../Style");
+
+  var _Style2 = _interopRequireDefault(_Style);
+
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+  function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+  function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+  var _components = {
+    App: {
+      displayName: "App"
+    }
+  };
+
+  var _node_modulesReactTransformHmrLibIndexJs2 = (0, _index2.default)({
+    filename: "/Users/Papi/Documents/dev/React Native/codification/components/app/Global.js",
+    components: _components,
+    locals: [module],
+    imports: [_react3.default]
+  });
+
+  function _wrapComponent(id) {
+    return function (Component) {
+      return _node_modulesReactTransformHmrLibIndexJs2(Component, id);
+    };
+  }
+
+  var Tabs = (0, _reactNavigation.TabNavigator)({
+    RoomList: {
+      screen: _RoomList2.default
+    },
+    ReservationState: {
+      screen: _ReservationState2.default
+    },
+    SwitchRoom: {
+      screen: _SwitchRoom2.default
+    },
+    Settings: {
+      screen: _Settings2.default
+    }
+  }, {
+    tabBarPosition: "bottom",
+    tabBarOptions: {
+      showLabel: false,
+      showIcon: true,
+      style: {
+        backgroundColor: _Style2.default.color,
+        borderTopWidth: 1,
+        borderTopColor: "blue"
+      },
+      indicatorStyle: {
+        backgroundColor: "white",
+        height: 2
+      }
+    }
+  });
+
+  var App = _wrapComponent("App")(function (_React$Component) {
+    _inherits(App, _React$Component);
+
+    function App() {
+      _classCallCheck(this, App);
+
+      return _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).apply(this, arguments));
+    }
+
+    _createClass(App, [{
+      key: "render",
+      value: function render() {
+        return _react3.default.createElement(
+          _reactNative.View,
+          {
+            style: {
+              flex: 1
+            },
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 38
+            }
+          },
+          _react3.default.createElement(_reactNative.StatusBar, {
+            hidden: true,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 39
+            }
+          }),
+          _react3.default.createElement(Tabs, {
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 40
+            }
+          })
+        );
+      }
+    }]);
+
+    return App;
+  }(_react3.default.Component));
+
+  exports.default = App;
+});

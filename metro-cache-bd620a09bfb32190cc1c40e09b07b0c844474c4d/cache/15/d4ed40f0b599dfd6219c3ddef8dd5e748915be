@@ -118,12 +118,12 @@ __d(function (global, require, module, exports, _dependencyMap) {
             )
           ),
           _react3.default.createElement(_reactNative.Button, {
-            onPress: this.goToDetails(),
+            onPress: this.goToDetails,
             title: "Codifier",
-            color: _Style2.default.color,
+            color: "green",
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 27
+              lineNumber: 26
             }
           })
         );
