@@ -27,6 +27,8 @@ __d(function (global, require, module, exports, _dependencyMap) {
 
   var _Style2 = _interopRequireDefault(_Style);
 
+  var _reactNavigation = require(_dependencyMap[5], "react-navigation");
+
   function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
   function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -72,7 +74,7 @@ __d(function (global, require, module, exports, _dependencyMap) {
             style: [style.white, style.bold],
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 13
+              lineNumber: 14
             }
           },
           this.props.floor.id
@@ -92,7 +94,7 @@ __d(function (global, require, module, exports, _dependencyMap) {
             style: style.view,
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 22
+              lineNumber: 23
             }
           },
           _react3.default.createElement(
@@ -100,7 +102,7 @@ __d(function (global, require, module, exports, _dependencyMap) {
             {
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 23
+                lineNumber: 24
               }
             },
             _react3.default.createElement(
@@ -111,7 +113,7 @@ __d(function (global, require, module, exports, _dependencyMap) {
                 },
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 24
+                  lineNumber: 25
                 }
               },
               this.floor()
@@ -123,7 +125,7 @@ __d(function (global, require, module, exports, _dependencyMap) {
             color: "green",
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 26
+              lineNumber: 27
             }
           })
         );

@@ -2,6 +2,7 @@ import React from "react";
 import { View, Text, StyleSheet, Button } from "react-native";
 import PropTypes from "prop-types";
 import globalStyle from "../../Style";
+import { StackNavigator } from "react-navigation";
 
 export default class Row extends React.Component {
   static propTypes = {

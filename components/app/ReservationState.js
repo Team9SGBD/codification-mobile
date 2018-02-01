@@ -6,7 +6,7 @@ export default class ReservationState extends React.Component {
   static navigationOptions = {
     title: "Etat reservation",
     tabBarIcon: () => {
-      return <Image source={require("./icons/eye.png")} style={style.icon} />;
+      return <Image source={require("./icons/eye.png")} />;
     }
   };
   render() {

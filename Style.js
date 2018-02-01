@@ -52,7 +52,8 @@ export default {
   },
   headerTitle: {
     color: "#ffffff",
-    paddingTop: 5
+    paddingTop: 0,
+    marginTop: 0
   },
   button: {
     backgroundColor: blue,

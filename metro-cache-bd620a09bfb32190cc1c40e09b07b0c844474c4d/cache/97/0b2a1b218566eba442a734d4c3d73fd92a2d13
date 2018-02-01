@@ -72,7 +72,7 @@ __d(function (global, require, module, exports, _dependencyMap) {
       var _this = _possibleConstructorReturn(this, (RoomList.__proto__ || Object.getPrototypeOf(RoomList)).call(this, props));
 
       _this.state = {
-        buildings: []
+        buildings: null
       };
 
       _this.getBuildings();
@@ -101,24 +101,36 @@ __d(function (global, require, module, exports, _dependencyMap) {
             return r1 !== r2;
           }
         });
-        return _react3.default.createElement(_reactNative.ListView, {
-          enableEmptySections: true,
-          dataSource: ds.cloneWithRows(this.state.buildings),
-          renderRow: function renderRow(row, k) {
-            return _react3.default.createElement(_Row2.default, {
-              floor: row,
-              index: parseInt(k, 10),
-              __source: {
-                fileName: _jsxFileName,
-                lineNumber: 46
-              }
-            });
-          },
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 42
-          }
-        });
+
+        if (this.state.buildings !== []) {
+          return _react3.default.createElement(_reactNative.ListView, {
+            enableEmptySections: true,
+            dataSource: ds.cloneWithRows(this.state.buildings),
+            renderRow: function renderRow(row, k) {
+              return _react3.default.createElement(_Row2.default, {
+                floor: row,
+                index: parseInt(k, 10),
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 48
+                }
+              });
+            },
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 44
+            }
+          });
+        } else {
+          return _react3.default.createElement(_reactNative.ActivityIndicator, {
+            color: _Style2.default.color,
+            size: "large",
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 53
+            }
+          });
+        }
       }
     }]);
 

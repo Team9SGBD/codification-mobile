@@ -85,7 +85,6 @@ __d(function (global, require, module, exports, _dependencyMap) {
     tabBarIcon: function tabBarIcon() {
       return _react3.default.createElement(_reactNative.Image, {
         source: require(_dependencyMap[4], "./icons/eye.png"),
-        style: _Style2.default.icon,
         __source: {
           fileName: _jsxFileName,
           lineNumber: 9

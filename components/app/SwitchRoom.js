@@ -6,9 +6,7 @@ export default class SwitchRooms extends React.Component {
   static navigationOptions = {
     title: "Echange de chambres",
     tabBarIcon: () => {
-      return (
-        <Image source={require("./icons/switch.png")} style={style.icon} />
-      );
+      return <Image source={require("./icons/switch.png")} />;
     }
   };
   render() {

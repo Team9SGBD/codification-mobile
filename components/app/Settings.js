@@ -6,9 +6,7 @@ export default class Settings extends React.Component {
   static navigationOptions = {
     title: "Parametres",
     tabBarIcon: () => {
-      return (
-        <Image source={require("./icons/settings.png")} style={style.icon} />
-      );
+      return <Image source={require("./icons/settings.png")} />;
     }
   };
 
