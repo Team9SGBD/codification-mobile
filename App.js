@@ -2,7 +2,7 @@ import React from "react";
 import {} from "react-native";
 import Home from "./components/Home";
 import Login from "./components/Login";
-import RoomList from "./components/app/RoomList";
+import Global from "./components/app/Global";
 import MainService from "./app/services/MainService";
 
 export default class App extends React.Component {
@@ -15,6 +15,6 @@ export default class App extends React.Component {
   }
 
   render() {
-    return this.state.loaded ? <RoomList /> : <Home />;
+    return this.state.loaded ? <Global /> : <Home />;
   }
 }
