@@ -66,8 +66,8 @@ __d(function (global, require, module, exports, _dependencyMap) {
     }
 
     _createClass(Row, [{
-      key: "floor",
-      value: function floor() {
+      key: "room",
+      value: function room() {
         return _react3.default.createElement(
           _reactNative.Text,
           {
@@ -77,7 +77,7 @@ __d(function (global, require, module, exports, _dependencyMap) {
               lineNumber: 14
             }
           },
-          this.props.floor.id
+          this.props.room.id
         );
       }
     }, {
@@ -116,7 +116,7 @@ __d(function (global, require, module, exports, _dependencyMap) {
                   lineNumber: 25
                 }
               },
-              this.floor()
+              this.room()
             )
           ),
           _react3.default.createElement(_reactNative.Button, {
@@ -134,7 +134,7 @@ __d(function (global, require, module, exports, _dependencyMap) {
 
     return Row;
   }(_react3.default.Component), _class.propTypes = {
-    floor: _propTypes2.default.object,
+    room: _propTypes2.default.object,
     index: _propTypes2.default.number
   }, _temp));
 

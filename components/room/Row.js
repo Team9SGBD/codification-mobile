@@ -6,12 +6,12 @@ import { StackNavigator } from "react-navigation";
 
 export default class Row extends React.Component {
   static propTypes = {
-    floor: PropTypes.object,
+    room: PropTypes.object,
     index: PropTypes.number
   };
 
-  floor() {
-    return <Text style={[style.white, style.bold]}>{this.props.floor.id}</Text>;
+  room() {
+    return <Text style={[style.white, style.bold]}>{this.props.room.id}</Text>;
   }
 
   goToDetails() {
@@ -22,7 +22,7 @@ export default class Row extends React.Component {
     return (
       <View style={style.view}>
         <View>
-          <Text style={{ fontSize: 10 }}>{this.floor()}</Text>
+          <Text style={{ fontSize: 10 }}>{this.room()}</Text>
         </View>
         <Button onPress={this.goToDetails} title="Codifier" color="green" />
       </View>

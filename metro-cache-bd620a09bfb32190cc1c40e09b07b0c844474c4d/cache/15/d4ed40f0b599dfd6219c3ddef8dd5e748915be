@@ -27,6 +27,8 @@ __d(function (global, require, module, exports, _dependencyMap) {
 
   var _Style2 = _interopRequireDefault(_Style);
 
+  var _reactNavigation = require(_dependencyMap[5], "react-navigation");
+
   function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
   function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -64,18 +66,18 @@ __d(function (global, require, module, exports, _dependencyMap) {
     }
 
     _createClass(Row, [{
-      key: "floor",
-      value: function floor() {
+      key: "room",
+      value: function room() {
         return _react3.default.createElement(
           _reactNative.Text,
           {
             style: [style.white, style.bold],
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 13
+              lineNumber: 14
             }
           },
-          this.props.floor.id
+          this.props.room.id
         );
       }
     }, {
@@ -92,7 +94,7 @@ __d(function (global, require, module, exports, _dependencyMap) {
             style: style.view,
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 22
+              lineNumber: 23
             }
           },
           _react3.default.createElement(
@@ -100,7 +102,7 @@ __d(function (global, require, module, exports, _dependencyMap) {
             {
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 23
+                lineNumber: 24
               }
             },
             _react3.default.createElement(
@@ -111,10 +113,10 @@ __d(function (global, require, module, exports, _dependencyMap) {
                 },
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 24
+                  lineNumber: 25
                 }
               },
-              this.floor()
+              this.room()
             )
           ),
           _react3.default.createElement(_reactNative.Button, {
@@ -123,7 +125,7 @@ __d(function (global, require, module, exports, _dependencyMap) {
             color: "green",
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 26
+              lineNumber: 27
             }
           })
         );
@@ -132,7 +134,7 @@ __d(function (global, require, module, exports, _dependencyMap) {
 
     return Row;
   }(_react3.default.Component), _class.propTypes = {
-    floor: _propTypes2.default.object,
+    room: _propTypes2.default.object,
     index: _propTypes2.default.number
   }, _temp));
 

@@ -31,6 +31,8 @@ __d(function (global, require, module, exports, _dependencyMap) {
 
   var _Style2 = _interopRequireDefault(_Style);
 
+  var _reactNavigation = require(_dependencyMap[6], "react-navigation");
+
   function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
   function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -59,9 +61,9 @@ __d(function (global, require, module, exports, _dependencyMap) {
   }
 
   var exampleUser = {
-    id: "5a71c57b88b3320014267604"
+    id: "5a7496cd184ba90014a66345"
   };
-  var baseURL = "http://codificationesp.herokuapp.com/api/";
+  var baseURL = "http://codificationcoud-esp.herokuapp.com/api/";
 
   var RoomList = _wrapComponent("RoomList")((_temp = _class = function (_React$Component) {
     _inherits(RoomList, _React$Component);
@@ -71,8 +73,13 @@ __d(function (global, require, module, exports, _dependencyMap) {
 
       var _this = _possibleConstructorReturn(this, (RoomList.__proto__ || Object.getPrototypeOf(RoomList)).call(this, props));
 
+      _this.componentDidMount = function () {
+        _this.getRooms();
+      };
+
       _this.state = {
-        buildings: null
+        buildings: [],
+        rooms: []
       };
 
       _this.getBuildings();
@@ -85,12 +92,58 @@ __d(function (global, require, module, exports, _dependencyMap) {
       value: function getBuildings() {
         var _this2 = this;
 
-        return _axios2.default.get(baseURL + "Accounts/" + exampleUser.id + "/batiments_Accesibles").then(function (response) {
+        return _axios2.default.get(baseURL + "Accounts/" + exampleUser.id + "/chambres_Accessibles").then(function (response) {
           _this2.setState({
-            buildings: response.data
+            buildings: response.data.batiments
           });
         }).catch(function (error) {
           return error;
+        });
+      }
+    }, {
+      key: "getRooms",
+      value: function getRooms() {
+        var _this3 = this;
+
+        var rooms = [];
+        var room = {
+          num: 0,
+          building: "",
+          floor: 0,
+          maxBeds: 0,
+          occupiedBeds: 0
+        };
+        this.getBuildings.then(function () {
+          if (_this3.state.buildings.length > 0) {
+            _this3.state.buildings.forEach(function (building) {
+              room.building = building.nombatiment;
+              console.log(room.building);
+
+              if (typeof building.etages !== undefined) {
+                console.log("Waa molneu");
+                building.etages.forEach(function (etage) {
+                  room.etage = etage.numero;
+
+                  if (typeof etage.chambres !== undefined) {
+                    if (etage.chambres.length > 0) {
+                      etage.chambres.forEach(function (chambre) {
+                        room.num = chambre.numchambre;
+                        room.maxBeds = chambre.nbremaxoccupants;
+                        if (typeof chambre.reservations !== undefined) room.occupiedBeds = chambre.reservations.length;
+
+                        _this3.setState({
+                          rooms: rooms.push(room)
+                        });
+                      });
+                    }
+                  }
+                });
+              }
+            });
+          }
+        });
+        this.setState({
+          rooms: rooms
         });
       }
     }, {
@@ -102,23 +155,23 @@ __d(function (global, require, module, exports, _dependencyMap) {
           }
         });
 
-        if (this.state.buildings !== []) {
+        if (this.state.buildings.length > 0) {
           return _react3.default.createElement(_reactNative.ListView, {
             enableEmptySections: true,
             dataSource: ds.cloneWithRows(this.state.buildings),
-            renderRow: function renderRow(row, k) {
+            renderRow: function renderRow(row, j, k) {
               return _react3.default.createElement(_Row2.default, {
-                floor: row,
+                room: row,
                 index: parseInt(k, 10),
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 48
+                  lineNumber: 95
                 }
               });
             },
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 44
+              lineNumber: 91
             }
           });
         } else {
@@ -127,7 +180,7 @@ __d(function (global, require, module, exports, _dependencyMap) {
             size: "large",
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 53
+              lineNumber: 100
             }
           });
         }
@@ -139,19 +192,27 @@ __d(function (global, require, module, exports, _dependencyMap) {
     title: "Chambres disponibles",
     tabBarIcon: function tabBarIcon() {
       return _react3.default.createElement(_reactNative.Image, {
-        source: require(_dependencyMap[6], "./icons/home.png"),
-        style: _Style2.default.icon,
+        source: require(_dependencyMap[7], "./icons/home.png"),
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 24
+          lineNumber: 26
         }
       });
     }
   }, _temp));
 
-  exports.default = RoomList;
   var navigationOptions = {
     headerStyle: _Style2.default.header,
     headerTitleStyle: _Style2.default.headerTitle
   };
+  exports.default = (0, _reactNavigation.StackNavigator)({
+    RoomList: {
+      screen: RoomList,
+      navigationOptions: navigationOptions
+    },
+    Confirm: {
+      screen: RoomList,
+      navigationOptions: navigationOptions
+    }
+  });
 });

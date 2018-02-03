@@ -6,15 +6,16 @@ import style from "../../Style";
 import { StackNavigator } from "react-navigation";
 
 const exampleUser = {
-  id: "5a71c57b88b3320014267604"
+  id: "5a7496cd184ba90014a66345"
 };
-const baseURL = "http://codificationesp.herokuapp.com/api/";
+const baseURL = "http://codificationcoud-esp.herokuapp.com/api/";
 
 class RoomList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      buildings: []
+      buildings: [],
+      rooms: []
     };
     this.getBuildings();
   }
@@ -28,12 +29,57 @@ class RoomList extends React.Component {
 
   getBuildings() {
     return axios
-      .get(`${baseURL}Accounts/${exampleUser.id}/batiments_Accesibles`)
+      .get(`${baseURL}Accounts/${exampleUser.id}/chambres_Accessibles`)
       .then(response => {
-        this.setState({ buildings: response.data });
+        this.setState({ buildings: response.data.batiments });
       })
       .catch(error => error);
   }
+
+  getRooms() {
+    let rooms = [];
+    let room = {
+      num: 0,
+      building: "",
+      floor: 0,
+      maxBeds: 0,
+      occupiedBeds: 0
+    };
+
+    this.getBuildings.then(() => {
+      if (this.state.buildings.length > 0) {
+        this.state.buildings.forEach(building => {
+          room.building = building.nombatiment;
+          console.log(room.building);
+
+          if (typeof building.etages !== undefined) {
+            console.log("Waa molneu");
+            building.etages.forEach(etage => {
+              room.etage = etage.numero;
+              if (typeof etage.chambres !== undefined) {
+                if (etage.chambres.length > 0) {
+                  etage.chambres.forEach(chambre => {
+                    room.num = chambre.numchambre;
+                    room.maxBeds = chambre.nbremaxoccupants;
+                    if (typeof chambre.reservations !== undefined)
+                      room.occupiedBeds = chambre.reservations.length;
+
+                    this.setState({ rooms: rooms.push(room) });
+                  });
+                }
+              }
+            });
+          }
+        });
+      }
+    });
+
+    this.setState({ rooms: rooms });
+  }
+
+  componentDidMount = () => {
+    this.getRooms();
+  };
 
   render() {
     const ds = new ListView.DataSource({
@@ -45,8 +91,8 @@ class RoomList extends React.Component {
         <ListView
           enableEmptySections={true}
           dataSource={ds.cloneWithRows(this.state.buildings)}
-          renderRow={(row, k) => (
-            <BuildingRow floor={row} index={parseInt(k, 10)} />
+          renderRow={(row, j, k) => (
+            <BuildingRow room={row} index={parseInt(k, 10)} />
           )}
         />
       );

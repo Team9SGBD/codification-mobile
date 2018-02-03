@@ -71,7 +71,7 @@ __d(function (global, require, module, exports, _dependencyMap) {
             },
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 16
+              lineNumber: 14
             }
           },
           "Parametres"
@@ -85,10 +85,9 @@ __d(function (global, require, module, exports, _dependencyMap) {
     tabBarIcon: function tabBarIcon() {
       return _react3.default.createElement(_reactNative.Image, {
         source: require(_dependencyMap[4], "./icons/settings.png"),
-        style: _Style2.default.icon,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 10
+          lineNumber: 9
         }
       });
     }
