@@ -11,7 +11,17 @@ export default class Row extends React.Component {
   };
 
   room() {
-    return <Text style={[style.white, style.bold]}>{this.props.room.id}</Text>;
+    return (
+      <View>
+        <Text style={[style.white, style.bold]}>
+          Chambre {this.props.room.numchambre}
+        </Text>
+        <View style={{ flex: 1, flexDirection: "row" }}>
+          <Text style={style.white}>{this.props.room.nombatiment}</Text>
+          <Text style={style.white}> - Etage {this.props.room.numetage}</Text>
+        </View>
+      </View>
+    );
   }
 
   goToDetails() {
@@ -21,9 +31,7 @@ export default class Row extends React.Component {
   render() {
     return (
       <View style={style.view}>
-        <View>
-          <Text style={{ fontSize: 10 }}>{this.room()}</Text>
-        </View>
+        {this.room()}
         <Button onPress={this.goToDetails} title="Codifier" color="green" />
       </View>
     );

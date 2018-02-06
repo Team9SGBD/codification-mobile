@@ -69,15 +69,61 @@ __d(function (global, require, module, exports, _dependencyMap) {
       key: "room",
       value: function room() {
         return _react3.default.createElement(
-          _reactNative.Text,
+          _reactNative.View,
           {
-            style: [style.white, style.bold],
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 14
+              lineNumber: 15
             }
           },
-          this.props.room.id
+          _react3.default.createElement(
+            _reactNative.Text,
+            {
+              style: [style.white, style.bold],
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 16
+              }
+            },
+            "Chambre ",
+            this.props.room.numchambre
+          ),
+          _react3.default.createElement(
+            _reactNative.View,
+            {
+              style: {
+                flex: 1,
+                flexDirection: "row"
+              },
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 19
+              }
+            },
+            _react3.default.createElement(
+              _reactNative.Text,
+              {
+                style: style.white,
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 20
+                }
+              },
+              this.props.room.nombatiment
+            ),
+            _react3.default.createElement(
+              _reactNative.Text,
+              {
+                style: style.white,
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 21
+                }
+              },
+              " - Etage ",
+              this.props.room.numetage
+            )
+          )
         );
       }
     }, {
@@ -94,38 +140,17 @@ __d(function (global, require, module, exports, _dependencyMap) {
             style: style.view,
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 23
+              lineNumber: 33
             }
           },
-          _react3.default.createElement(
-            _reactNative.View,
-            {
-              __source: {
-                fileName: _jsxFileName,
-                lineNumber: 24
-              }
-            },
-            _react3.default.createElement(
-              _reactNative.Text,
-              {
-                style: {
-                  fontSize: 10
-                },
-                __source: {
-                  fileName: _jsxFileName,
-                  lineNumber: 25
-                }
-              },
-              this.room()
-            )
-          ),
+          this.room(),
           _react3.default.createElement(_reactNative.Button, {
             onPress: this.goToDetails,
             title: "Codifier",
             color: "green",
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 27
+              lineNumber: 35
             }
           })
         );

@@ -22,7 +22,7 @@ const Tabs = TabNavigator(
       style: {
         backgroundColor: style.color,
         borderTopWidth: 1,
-        borderTopColor: "blue"
+        borderTopColor: "#0071ff"
       },
       indicatorStyle: {
         backgroundColor: "white",

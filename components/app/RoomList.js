@@ -14,10 +14,9 @@ class RoomList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      buildings: [],
       rooms: []
     };
-    this.getBuildings();
+    this.getRooms();
   }
 
   static navigationOptions = {
@@ -27,70 +26,70 @@ class RoomList extends React.Component {
     }
   };
 
-  getBuildings() {
+  getRooms() {
     return axios
       .get(`${baseURL}Accounts/${exampleUser.id}/chambres_Accessibles`)
       .then(response => {
-        this.setState({ buildings: response.data.batiments });
+        this.setState({ rooms: response.data });
       })
       .catch(error => error);
   }
 
-  getRooms() {
-    let rooms = [];
-    let room = {
-      num: 0,
-      building: "",
-      floor: 0,
-      maxBeds: 0,
-      occupiedBeds: 0
-    };
+  // getRooms() {
+  //   let rooms = [];
+  //   let room = {
+  //     num: 0,
+  //     building: "",
+  //     floor: 0,
+  //     maxBeds: 0,
+  //     occupiedBeds: 0
+  //   };
 
-    this.getBuildings.then(() => {
-      if (this.state.buildings.length > 0) {
-        this.state.buildings.forEach(building => {
-          room.building = building.nombatiment;
-          console.log(room.building);
+  //   this.getBuildings.then(() => {
+  //     if (this.state.buildings.length > 0) {
+  //       this.state.buildings.forEach(building => {
+  //         room.building = building.nombatiment;
+  //         console.log(room.building);
 
-          if (typeof building.etages !== undefined) {
-            console.log("Waa molneu");
-            building.etages.forEach(etage => {
-              room.etage = etage.numero;
-              if (typeof etage.chambres !== undefined) {
-                if (etage.chambres.length > 0) {
-                  etage.chambres.forEach(chambre => {
-                    room.num = chambre.numchambre;
-                    room.maxBeds = chambre.nbremaxoccupants;
-                    if (typeof chambre.reservations !== undefined)
-                      room.occupiedBeds = chambre.reservations.length;
+  //         if (typeof building.etages !== undefined) {
+  //           console.log("Waa molneu");
+  //           building.etages.forEach(etage => {
+  //             room.etage = etage.numero;
+  //             if (typeof etage.chambres !== undefined) {
+  //               if (etage.chambres.length > 0) {
+  //                 etage.chambres.forEach(chambre => {
+  //                   room.num = chambre.numchambre;
+  //                   room.maxBeds = chambre.nbremaxoccupants;
+  //                   if (typeof chambre.reservations !== undefined)
+  //                     room.occupiedBeds = chambre.reservations.length;
 
-                    this.setState({ rooms: rooms.push(room) });
-                  });
-                }
-              }
-            });
-          }
-        });
-      }
-    });
+  //                   this.setState({ rooms: rooms.push(room) });
+  //                 });
+  //               }
+  //             }
+  //           });
+  //         }
+  //       });
+  //     }
+  //   });
 
-    this.setState({ rooms: rooms });
-  }
+  //   this.setState({ rooms: rooms });
+  // }
 
-  componentDidMount = () => {
-    this.getRooms();
-  };
+  // componentDidMount = () => {
+  //   this.getRooms();
+  // };
 
   render() {
     const ds = new ListView.DataSource({
       rowHasChanged: (r1, r2) => r1 !== r2
     });
 
-    if (this.state.buildings.length > 0) {
+    if (this.state.rooms.length > 0) {
       return (
         <ListView
           enableEmptySections={true}
-          dataSource={ds.cloneWithRows(this.state.buildings)}
+          dataSource={ds.cloneWithRows(this.state.rooms)}
           renderRow={(row, j, k) => (
             <BuildingRow room={row} index={parseInt(k, 10)} />
           )}
