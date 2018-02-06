@@ -23,6 +23,12 @@ __d(function (global, require, module, exports, _dependencyMap) {
 
   var _Style2 = _interopRequireDefault(_Style);
 
+  var _reactNativeSettingsList = require(_dependencyMap[4], "react-native-settings-list");
+
+  var _reactNativeSettingsList2 = _interopRequireDefault(_reactNativeSettingsList);
+
+  var _reactNavigation = require(_dependencyMap[5], "react-navigation");
+
   function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
   function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -56,25 +62,118 @@ __d(function (global, require, module, exports, _dependencyMap) {
     function Settings() {
       _classCallCheck(this, Settings);
 
-      return _possibleConstructorReturn(this, (Settings.__proto__ || Object.getPrototypeOf(Settings)).apply(this, arguments));
+      return _possibleConstructorReturn(this, (Settings.__proto__ || Object.getPrototypeOf(Settings)).call(this));
     }
 
     _createClass(Settings, [{
       key: "render",
       value: function render() {
         return _react3.default.createElement(
-          _reactNative.Text,
+          _reactNative.View,
           {
             style: {
-              color: _Style2.default.color,
-              fontSize: 35
+              backgroundColor: "#f6f6f6",
+              flex: 1
             },
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 14
+              lineNumber: 20
             }
           },
-          "Parametres"
+          _react3.default.createElement(
+            _reactNative.View,
+            {
+              style: {
+                backgroundColor: "#f6f6f6",
+                flex: 1
+              },
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 21
+              }
+            },
+            _react3.default.createElement(
+              _reactNativeSettingsList2.default,
+              {
+                borderColor: _Style2.default.color,
+                defaultItemSize: 50,
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 22
+                }
+              },
+              _react3.default.createElement(_reactNativeSettingsList2.default.Item, {
+                icon: _react3.default.createElement(
+                  _reactNative.View,
+                  {
+                    style: styles.imageStyle,
+                    __source: {
+                      fileName: _jsxFileName,
+                      lineNumber: 25
+                    }
+                  },
+                  _react3.default.createElement(_reactNative.Image, {
+                    style: {
+                      alignSelf: "center",
+                      height: 22,
+                      width: 22
+                    },
+                    source: require(_dependencyMap[6], "./icons/account.png"),
+                    __source: {
+                      fileName: _jsxFileName,
+                      lineNumber: 26
+                    }
+                  })
+                ),
+                hasNavArrow: false,
+                itemWidth: 70,
+                titleStyle: {
+                  color: "black",
+                  fontSize: 16
+                },
+                title: "Modifier profil",
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 23
+                }
+              }),
+              _react3.default.createElement(_reactNativeSettingsList2.default.Item, {
+                icon: _react3.default.createElement(
+                  _reactNative.View,
+                  {
+                    style: styles.imageStyle,
+                    __source: {
+                      fileName: _jsxFileName,
+                      lineNumber: 39
+                    }
+                  },
+                  _react3.default.createElement(_reactNative.Image, {
+                    style: {
+                      alignSelf: "center",
+                      height: 4,
+                      width: 18
+                    },
+                    source: require(_dependencyMap[7], "./icons/exit.png"),
+                    __source: {
+                      fileName: _jsxFileName,
+                      lineNumber: 40
+                    }
+                  })
+                ),
+                title: "D\xE9connexion",
+                itemWidth: 70,
+                titleStyle: {
+                  color: "black",
+                  fontSize: 16
+                },
+                hasNavArrow: false,
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 37
+                }
+              })
+            )
+          )
         );
       }
     }]);
@@ -84,18 +183,38 @@ __d(function (global, require, module, exports, _dependencyMap) {
     title: "Parametres",
     tabBarIcon: function tabBarIcon() {
       return _react3.default.createElement(_reactNative.Image, {
-        source: require(_dependencyMap[4], "./icons/settings.png"),
+        source: require(_dependencyMap[8], "./icons/settings.png"),
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 9
+          lineNumber: 14
         }
       });
     }
   }, _temp));
 
-  exports.default = Settings;
+  var styles = _reactNative.StyleSheet.create({
+    imageStyle: {
+      marginLeft: 15,
+      marginRight: 20,
+      alignSelf: "center",
+      width: 20,
+      height: 24,
+      justifyContent: "center"
+    }
+  });
+
   var navigationOptions = {
     headerStyle: _Style2.default.header,
     headerTitleStyle: _Style2.default.headerTitle
   };
+  exports.default = (0, _reactNavigation.StackNavigator)({
+    Settings: {
+      screen: Settings,
+      navigationOptions: navigationOptions
+    },
+    Profile: {
+      screen: Settings,
+      navigationOptions: navigationOptions
+    }
+  });
 });

@@ -1,0 +1,585 @@
+__d(function (global, require, module, exports, _dependencyMap) {
+  'use strict';
+
+  var _react2 = require(_dependencyMap[0], "react");
+
+  var _react3 = _interopRequireDefault(_react2);
+
+  var _index = require(_dependencyMap[1], "./../react-transform-hmr/lib/index.js");
+
+  var _index2 = _interopRequireDefault(_index);
+
+  var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+  var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+  var _class,
+      _temp,
+      _jsxFileName = "/Users/Papi/Documents/dev/React Native/codification/node_modules/react-native-settings-list/index.js";
+
+  var _propTypes = require(_dependencyMap[2], "prop-types");
+
+  var _propTypes2 = _interopRequireDefault(_propTypes);
+
+  var _createReactClass = require(_dependencyMap[3], "create-react-class");
+
+  var _createReactClass2 = _interopRequireDefault(_createReactClass);
+
+  var _reactNative = require(_dependencyMap[4], "react-native");
+
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+  function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+  function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+  var _components = {
+    SettingsList: {
+      displayName: "SettingsList"
+    }
+  };
+
+  var _reactTransformHmrLibIndexJs2 = (0, _index2.default)({
+    filename: "/Users/Papi/Documents/dev/React Native/codification/node_modules/react-native-settings-list/index.js",
+    components: _components,
+    locals: [module],
+    imports: [_react3.default]
+  });
+
+  function _wrapComponent(id) {
+    return function (Component) {
+      return _reactTransformHmrLibIndexJs2(Component, id);
+    };
+  }
+
+  var ARROW_ICON = require(_dependencyMap[5], './img/icon-arrow-settings.png');
+
+  var SettingsList = _wrapComponent("SettingsList")((_temp = _class = function (_React$Component) {
+    _inherits(SettingsList, _React$Component);
+
+    function SettingsList() {
+      _classCallCheck(this, SettingsList);
+
+      return _possibleConstructorReturn(this, (SettingsList.__proto__ || Object.getPrototypeOf(SettingsList)).apply(this, arguments));
+    }
+
+    _createClass(SettingsList, [{
+      key: "_getGroups",
+      value: function _getGroups() {
+        var groupNumber = -1;
+        var headers = [];
+        var itemGroup = [];
+        var result = [];
+
+        _react3.default.Children.forEach(this.props.children, function (child) {
+          if (!child) return;
+
+          if (child.type.displayName === 'Header') {
+            if (groupNumber != -1) {
+              result[groupNumber] = {
+                items: itemGroup,
+                header: headers[groupNumber]
+              };
+              itemGroup = [];
+            }
+
+            groupNumber++;
+            headers[groupNumber] = child.props;
+          } else if (child.type.displayName === 'Item') {
+            if (groupNumber == -1) {
+              groupNumber++;
+            }
+
+            itemGroup.push(child.props);
+          } else {
+            if (groupNumber == -1) {
+              groupNumber++;
+            }
+
+            itemGroup.push(child);
+          }
+        });
+
+        result[groupNumber] = {
+          items: itemGroup,
+          header: headers[groupNumber]
+        };
+        return result;
+      }
+    }, {
+      key: "render",
+      value: function render() {
+        var _this2 = this;
+
+        return _react3.default.createElement(
+          _reactNative.ScrollView,
+          _extends({}, this.props.scrollViewProps, {
+            ref: "_scrollView",
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 74
+            }
+          }),
+          this._getGroups().map(function (group, index) {
+            return _this2._groupView(group, index);
+          })
+        );
+      }
+    }, {
+      key: "_groupView",
+      value: function _groupView(group, index) {
+        var _this3 = this;
+
+        if (group.header) {
+          return _react3.default.createElement(
+            _reactNative.View,
+            {
+              key: 'group_' + index,
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 85
+              }
+            },
+            _react3.default.createElement(
+              _reactNative.Text,
+              {
+                style: [{
+                  margin: 5
+                }, group.header.headerStyle],
+                numberOfLines: group.header.headerNumberOfLines,
+                ellipsizeMode: "tail",
+                ref: group.header.headerRef,
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 86
+                }
+              },
+              group.header.headerText
+            ),
+            _react3.default.createElement(
+              _reactNative.View,
+              {
+                style: {
+                  borderTopWidth: 1,
+                  borderBottomWidth: 1,
+                  borderColor: this.props.borderColor
+                },
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 87
+                }
+              },
+              group.items.map(function (item, index) {
+                return _this3._itemView(item, index, group.items.length);
+              })
+            )
+          );
+        } else {
+          var items = void 0;
+
+          if (group.items.length > 0) {
+            items = _react3.default.createElement(
+              _reactNative.View,
+              {
+                style: {
+                  borderTopWidth: 1,
+                  borderBottomWidth: 1,
+                  borderColor: this.props.borderColor
+                },
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 98
+                }
+              },
+              group.items.map(function (item, index) {
+                return _this3._itemView(item, index, group.items.length);
+              })
+            );
+          }
+
+          return _react3.default.createElement(
+            _reactNative.View,
+            {
+              key: 'group_' + index,
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 107
+              }
+            },
+            items
+          );
+        }
+      }
+    }, {
+      key: "_itemEditableBlock",
+      value: function _itemEditableBlock(item, index, position) {
+        return [_react3.default.createElement(
+          _reactNative.Text,
+          {
+            key: 'itemTitle_' + index,
+            style: [item.titleStyle ? item.titleStyle : this.props.defaultTitleStyle, position === 'Bottom' ? null : styles.titleText],
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 117
+            }
+          },
+          item.title
+        ), item.isEditable ? _react3.default.createElement(_reactNative.TextInput, {
+          key: item.id,
+          style: item.editableTextStyle ? item.editableTextStyle : styles.editableText,
+          placeholder: item.placeholder,
+          onChangeText: function onChangeText(text) {
+            return item.onTextChange(text);
+          },
+          value: item.value,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 126
+          }
+        }) : null];
+      }
+    }, {
+      key: "_itemTitleBlock",
+      value: function _itemTitleBlock(item, index, position) {
+        return [_react3.default.createElement(
+          _reactNative.Text,
+          {
+            key: 'itemTitle_' + index,
+            style: [item.titleStyle ? item.titleStyle : this.props.defaultTitleStyle, position === 'Bottom' ? null : styles.titleText],
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 138
+            }
+          },
+          item.title
+        ), item.titleInfo ? _react3.default.createElement(
+          _reactNative.Text,
+          {
+            key: 'itemTitleInfo_' + index,
+            style: [item.rightSideStyle ? item.rightSideStyle : position === 'Bottom' ? null : styles.rightSide, {
+              color: '#B1B1B1'
+            }, item.titleInfoStyle],
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 147
+            }
+          },
+          item.titleInfo
+        ) : null];
+      }
+    }, {
+      key: "_itemView",
+      value: function _itemView(item, index, max) {
+        var _this4 = this;
+
+        var border;
+
+        if (item.type && item.type.displayName) {
+          return item;
+        }
+
+        if (item.borderHide) {
+          switch (item.borderHide) {
+            case 'Top':
+              border = {
+                borderBottomWidth: 1,
+                borderColor: this.props.borderColor
+              };
+              break;
+
+            case 'Bottom':
+              border = {
+                borderTopWidth: 1,
+                borderColor: this.props.borderColor
+              };
+              break;
+          }
+        } else {
+          border = index === max - 1 ? {
+            borderWidth: 0
+          } : {
+            borderBottomWidth: 1,
+            borderColor: this.props.borderColor
+          };
+        }
+
+        var titleInfoPosition = item.titleInfoPosition ? item.titleInfoPosition : this.props.defaultTitleInfoPosition;
+        return _react3.default.createElement(
+          _reactNative.TouchableHighlight,
+          {
+            accessible: false,
+            key: 'item_' + index,
+            underlayColor: item.underlayColor ? item.underlayColor : this.props.underlayColor,
+            onPress: item.onPress,
+            onLongPress: item.onLongPress,
+            ref: item.itemRef,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 181
+            }
+          },
+          _react3.default.createElement(
+            _reactNative.View,
+            {
+              style: item.itemBoxStyle ? item.itemBoxStyle : [styles.itemBox, {
+                backgroundColor: item.backgroundColor ? item.backgroundColor : this.props.backgroundColor
+              }],
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 182
+              }
+            },
+            item.icon,
+            item.isAuth ? _react3.default.createElement(
+              _reactNative.View,
+              {
+                style: item.titleBoxStyle ? item.titleBoxStyle : [styles.titleBox, border],
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 185
+                }
+              },
+              _react3.default.createElement(
+                _reactNative.View,
+                {
+                  style: {
+                    paddingLeft: 5,
+                    flexDirection: 'column',
+                    flex: 1
+                  },
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 186
+                  }
+                },
+                _react3.default.createElement(
+                  _reactNative.View,
+                  {
+                    style: {
+                      borderBottomWidth: 1,
+                      borderColor: this.props.borderColor
+                    },
+                    __source: {
+                      fileName: _jsxFileName,
+                      lineNumber: 187
+                    }
+                  },
+                  _react3.default.createElement(_reactNative.TextInput, _extends({
+                    ref: "UserNameInputBlock",
+                    onSubmitEditing: function onSubmitEditing() {
+                      return _this4.refs.PasswordInputBlock.focus();
+                    },
+                    style: {
+                      flex: 1,
+                      height: 30,
+                      borderBottomWidth: 1
+                    },
+                    placeholder: "username"
+                  }, item.authPropsUser, {
+                    __source: {
+                      fileName: _jsxFileName,
+                      lineNumber: 188
+                    }
+                  }))
+                ),
+                _react3.default.createElement(
+                  _reactNative.View,
+                  {
+                    __source: {
+                      fileName: _jsxFileName,
+                      lineNumber: 196
+                    }
+                  },
+                  _react3.default.createElement(_reactNative.TextInput, _extends({
+                    ref: "PasswordInputBlock",
+                    style: {
+                      flex: 1,
+                      height: 30
+                    },
+                    placeholder: "password",
+                    secureTextEntry: true,
+                    returnKeyType: 'go'
+                  }, item.authPropsPW, {
+                    onSubmitEditing: function onSubmitEditing() {
+                      return item.onPress();
+                    },
+                    __source: {
+                      fileName: _jsxFileName,
+                      lineNumber: 197
+                    }
+                  }))
+                )
+              )
+            ) : _react3.default.createElement(
+              _reactNative.View,
+              {
+                style: item.titleBoxStyle ? item.titleBoxStyle : [styles.titleBox, border, {
+                  minHeight: item.itemWidth ? item.itemWidth : this.props.defaultItemSize
+                }],
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 210
+                }
+              },
+              titleInfoPosition === 'Bottom' ? _react3.default.createElement(
+                _reactNative.View,
+                {
+                  style: {
+                    flexDirection: 'column',
+                    flex: 1,
+                    justifyContent: 'center'
+                  },
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 212
+                  }
+                },
+                item.isEditable ? this._itemEditableBlock(item, inde, 'Bottom') : this._itemTitleBlock(item, index, 'Bottom')
+              ) : item.isEditable ? this._itemEditableBlock(item, index) : this._itemTitleBlock(item, index),
+              item.rightSideContent ? item.rightSideContent : null,
+              item.hasSwitch ? _react3.default.createElement(_reactNative.Switch, _extends({}, item.switchProps, {
+                style: styles.rightSide,
+                onValueChange: function onValueChange(value) {
+                  return item.switchOnValueChange(value);
+                },
+                value: item.switchState,
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 219
+                }
+              })) : null,
+              this.itemArrowIcon(item)
+            )
+          )
+        );
+      }
+    }, {
+      key: "itemArrowIcon",
+      value: function itemArrowIcon(item) {
+        if (item.arrowIcon) {
+          return item.arrowIcon;
+        }
+
+        if (item.hasNavArrow) {
+          return _react3.default.createElement(_reactNative.Image, {
+            style: [styles.rightSide, item.arrowStyle],
+            source: ARROW_ICON,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 239
+            }
+          });
+        }
+
+        return null;
+      }
+    }]);
+
+    return SettingsList;
+  }(_react3.default.Component), _class.propTypes = {
+    backgroundColor: _propTypes2.default.string,
+    borderColor: _propTypes2.default.string,
+    defaultItemSize: _propTypes2.default.number,
+    underlayColor: _propTypes2.default.string,
+    defaultTitleStyle: _reactNative.Text.propTypes.style,
+    defaultTitleInfoPosition: _propTypes2.default.string,
+    scrollViewProps: _propTypes2.default.object
+  }, _class.defaultProps = {
+    backgroundColor: 'white',
+    borderColor: 'black',
+    defaultItemSize: 50,
+    underlayColor: 'transparent',
+    defaultTitleStyle: {
+      fontSize: 16
+    }
+  }, _temp));
+
+  module.exports = SettingsList;
+
+  var styles = _reactNative.StyleSheet.create({
+    itemBox: {
+      flex: 1,
+      justifyContent: 'center',
+      flexDirection: 'row'
+    },
+    titleBox: {
+      flex: 1,
+      marginLeft: 15,
+      flexDirection: 'row'
+    },
+    titleText: {
+      flex: 1,
+      alignSelf: 'center'
+    },
+    rightSide: {
+      marginRight: 15,
+      alignSelf: 'center'
+    },
+    editableText: {
+      flex: 1,
+      textAlign: 'right',
+      marginRight: 15
+    }
+  });
+
+  SettingsList.Header = (0, _createReactClass2.default)({
+    displayName: "Header",
+    propTypes: {
+      headerText: _propTypes2.default.string,
+      headerStyle: _reactNative.Text.propTypes.style,
+      headerRef: _propTypes2.default.func,
+      headerNumberOfLines: _propTypes2.default.number
+    },
+    getDefaultProps: function getDefaultProps() {
+      return {
+        headerNumberOfLines: 1
+      };
+    },
+    render: function render() {
+      return null;
+    }
+  });
+  SettingsList.Item = (0, _createReactClass2.default)({
+    displayName: "Item",
+    propTypes: {
+      title: _propTypes2.default.string,
+      titleStyle: _reactNative.Text.propTypes.style,
+      icon: _propTypes2.default.node,
+      itemBoxStyle: _reactNative.ViewPropTypes.style,
+      titleBoxStyle: _reactNative.ViewPropTypes.style,
+      rightSideStyle: _reactNative.ViewPropTypes.style,
+      editableTextStyle: _reactNative.Text.propTypes.style,
+      itemWidth: _propTypes2.default.number,
+      isAuth: _propTypes2.default.bool,
+      authPropsUser: _propTypes2.default.object,
+      authPropsPW: _propTypes2.default.object,
+      backgroundColor: _propTypes2.default.string,
+      underlayColor: _propTypes2.default.string,
+      onPress: _propTypes2.default.func,
+      onLongPress: _propTypes2.default.func,
+      hasNavArrow: _propTypes2.default.bool,
+      arrowIcon: _propTypes2.default.node,
+      arrowStyle: _reactNative.Image.propTypes.style,
+      hasSwitch: _propTypes2.default.bool,
+      switchState: _propTypes2.default.bool,
+      switchProps: _propTypes2.default.object,
+      switchOnValueChange: _propTypes2.default.func,
+      titleInfo: _propTypes2.default.string,
+      titleInfoStyle: _reactNative.Text.propTypes.style,
+      titleInfoPosition: _propTypes2.default.string,
+      rightSideContent: _propTypes2.default.node,
+      borderHide: _propTypes2.default.oneOf(['Top', 'Bottom', 'Both']),
+      itemRef: _propTypes2.default.func
+    },
+    getDefaultProps: function getDefaultProps() {
+      return {
+        hasNavArrow: true
+      };
+    },
+    render: function render() {
+      return null;
+    }
+  });
+});
