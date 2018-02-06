@@ -87,7 +87,7 @@ __d(function (global, require, module, exports, _dependencyMap) {
       style: {
         backgroundColor: _Style2.default.color,
         borderTopWidth: 1,
-        borderTopColor: "blue"
+        borderTopColor: "#0071ff"
       },
       indicatorStyle: {
         backgroundColor: "white",

@@ -77,7 +77,7 @@ __d(function (global, require, module, exports, _dependencyMap) {
         rooms: []
       };
 
-      _this.getBuildings();
+      _this.getRooms();
 
       return _this;
     }
@@ -104,10 +104,10 @@ __d(function (global, require, module, exports, _dependencyMap) {
           }
         });
 
-        if (this.state.buildings.length > 0) {
+        if (this.state.rooms.length > 0) {
           return _react3.default.createElement(_reactNative.ListView, {
             enableEmptySections: true,
-            dataSource: ds.cloneWithRows(this.state.buildings),
+            dataSource: ds.cloneWithRows(this.state.rooms),
             renderRow: function renderRow(row, j, k) {
               return _react3.default.createElement(_Row2.default, {
                 room: row,
