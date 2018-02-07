@@ -15,6 +15,18 @@ class Settings extends React.Component {
     }
   };
 
+  updateMail() {
+    console.log("Modif mail");
+  }
+
+  updatePwd() {
+    console.log("Modif mdp");
+  }
+
+  logout() {
+    console.log("Deconnexion");
+  }
+
   render() {
     return (
       <View style={{ backgroundColor: "#f6f6f6", flex: 1 }}>
@@ -32,7 +44,23 @@ class Settings extends React.Component {
               hasNavArrow={false}
               itemWidth={70}
               titleStyle={{ color: "black", fontSize: 16 }}
-              title="Modifier profil"
+              title="Modifier email"
+              onPress={this.updateMail}
+            />
+            <SettingsList.Item
+              icon={
+                <View style={styles.imageStyle}>
+                  <Image
+                    style={{ alignSelf: "center", height: 22, width: 22 }}
+                    source={require("./icons/lock.png")}
+                  />
+                </View>
+              }
+              hasNavArrow={false}
+              itemWidth={70}
+              titleStyle={{ color: "black", fontSize: 16 }}
+              title="Modifier mot de passe"
+              onPress={this.updatePwd}
             />
             <SettingsList.Item
               icon={
@@ -47,6 +75,7 @@ class Settings extends React.Component {
               itemWidth={70}
               titleStyle={{ color: "black", fontSize: 16 }}
               hasNavArrow={false}
+              onPress={this.logout}
             />
           </SettingsList>
         </View>

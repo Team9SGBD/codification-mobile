@@ -152,24 +152,6 @@ __d(function (global, require, module, exports, _dependencyMap) {
               fileName: _jsxFileName,
               lineNumber: 35
             }
-          }),
-          _react3.default.createElement(_reactNative.Button, {
-            onPress: this.goToDetails,
-            title: _react3.default.createElement(_reactNative.Image, {
-              source: require(_dependencyMap[6], "./icons/eye.png"),
-              style: {
-                width: 100,
-                height: 100
-              },
-              __source: {
-                fileName: _jsxFileName,
-                lineNumber: 39
-              }
-            }),
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 36
-            }
           })
         );
       }

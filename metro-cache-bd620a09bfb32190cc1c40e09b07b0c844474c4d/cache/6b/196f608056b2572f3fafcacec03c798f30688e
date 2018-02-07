@@ -84,7 +84,7 @@ __d(function (global, require, module, exports, _dependencyMap) {
     _createClass(App, [{
       key: "render",
       value: function render() {
-        return this.state.loaded ? _react3.default.createElement(_Global2.default, {
+        return this.state.loaded ? _react3.default.createElement(_Login2.default, {
           __source: {
             fileName: _jsxFileName,
             lineNumber: 18
