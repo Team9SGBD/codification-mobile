@@ -1,12 +1,14 @@
 import React from "react";
-import { Text, Image, View, StyleSheet } from "react-native";
+import { Text, Image, View, StyleSheet, Keyboard } from "react-native";
 import style from "../../Style";
 import SettingsList from "react-native-settings-list";
 import { StackNavigator } from "react-navigation";
+import UpdateMail from "./UpdateMail";
+import UpdatePwd from "./UpdatePwd";
 
 class Settings extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
   }
   static navigationOptions = {
     title: "Parametres",
@@ -16,11 +18,13 @@ class Settings extends React.Component {
   };
 
   updateMail() {
-    console.log("Modif mail");
+    Keyboard.dismiss();
+    this.props.navigation.navigate("UpdateMail");
   }
 
   updatePwd() {
-    console.log("Modif mdp");
+    Keyboard.dismiss();
+    this.props.navigation.navigate("UpdatePwd");
   }
 
   logout() {
@@ -45,7 +49,7 @@ class Settings extends React.Component {
               itemWidth={70}
               titleStyle={{ color: "black", fontSize: 16 }}
               title="Modifier email"
-              onPress={this.updateMail}
+              onPress={() => this.updateMail()}
             />
             <SettingsList.Item
               icon={
@@ -60,13 +64,13 @@ class Settings extends React.Component {
               itemWidth={70}
               titleStyle={{ color: "black", fontSize: 16 }}
               title="Modifier mot de passe"
-              onPress={this.updatePwd}
+              onPress={() => this.updatePwd()}
             />
             <SettingsList.Item
               icon={
                 <View style={styles.imageStyle}>
                   <Image
-                    style={{ alignSelf: "center", height: 4, width: 18 }}
+                    style={{ alignSelf: "center", height: 22, width: 18 }}
                     source={require("./icons/exit.png")}
                   />
                 </View>
@@ -105,8 +109,12 @@ export default StackNavigator({
     screen: Settings,
     navigationOptions
   },
-  Profile: {
-    screen: Settings,
+  UpdateMail: {
+    screen: UpdateMail,
+    navigationOptions
+  },
+  UpdatePwd: {
+    screen: UpdatePwd,
     navigationOptions
   }
 });

@@ -15,6 +15,6 @@ export default class App extends React.Component {
   }
 
   render() {
-    return this.state.loaded ? <Login /> : <Home />;
+    return this.state.loaded ? <Global /> : <Home />;
   }
 }

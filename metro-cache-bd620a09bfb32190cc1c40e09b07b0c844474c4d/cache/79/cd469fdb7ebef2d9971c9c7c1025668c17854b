@@ -5,9 +5,9 @@ __d(function (global, require, module, exports, _dependencyMap) {
     "width": 24,
     "height": 24,
     "scales": [1],
-    "hash": "721746ff5aba2b93764a1406337b378c",
+    "hash": "43f09c6e955ea5e3ee9aeaf6f06f8a95",
     "name": "exit",
     "type": "png",
-    "fileHashes": ["721746ff5aba2b93764a1406337b378c"]
+    "fileHashes": ["43f09c6e955ea5e3ee9aeaf6f06f8a95"]
   });
 });

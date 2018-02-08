@@ -7,17 +7,21 @@ __d(function (global, require, module, exports, _dependencyMap) {
 
   var _react3 = _interopRequireDefault(_react2);
 
-  var _index = require(_dependencyMap[1], "./../node_modules/react-transform-hmr/lib/index.js");
+  var _index = require(_dependencyMap[1], "./../../node_modules/react-transform-hmr/lib/index.js");
 
   var _index2 = _interopRequireDefault(_index);
 
-  var _jsxFileName = "/Users/Papi/Documents/dev/React Native/codification/components/Login.js";
-
   var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+  var _class,
+      _temp,
+      _jsxFileName = "/Users/Papi/Documents/dev/React Native/codification/components/app/UpdatePwd.js";
 
   var _reactNative = require(_dependencyMap[2], "react-native");
 
-  var _Style = require(_dependencyMap[3], "../Style");
+  var _reactNavigation = require(_dependencyMap[3], "react-navigation");
+
+  var _Style = require(_dependencyMap[4], "../../Style");
 
   var _Style2 = _interopRequireDefault(_Style);
 
@@ -30,13 +34,13 @@ __d(function (global, require, module, exports, _dependencyMap) {
   function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
   var _components = {
-    Login: {
-      displayName: "Login"
+    UpdatePwd: {
+      displayName: "UpdatePwd"
     }
   };
 
   var _node_modulesReactTransformHmrLibIndexJs2 = (0, _index2.default)({
-    filename: "/Users/Papi/Documents/dev/React Native/codification/components/Login.js",
+    filename: "/Users/Papi/Documents/dev/React Native/codification/components/app/UpdatePwd.js",
     components: _components,
     locals: [module],
     imports: [_react3.default]
@@ -48,74 +52,39 @@ __d(function (global, require, module, exports, _dependencyMap) {
     };
   }
 
-  var Login = _wrapComponent("Login")(function (_React$Component) {
-    _inherits(Login, _React$Component);
+  var UpdatePwd = _wrapComponent("UpdatePwd")((_temp = _class = function (_React$Component) {
+    _inherits(UpdatePwd, _React$Component);
 
-    function Login(props) {
-      _classCallCheck(this, Login);
+    function UpdatePwd(props) {
+      _classCallCheck(this, UpdatePwd);
 
-      var _this = _possibleConstructorReturn(this, (Login.__proto__ || Object.getPrototypeOf(Login)).call(this, props));
+      var _this = _possibleConstructorReturn(this, (UpdatePwd.__proto__ || Object.getPrototypeOf(UpdatePwd)).call(this, props));
 
       _this.state = {
-        email: "",
-        password: "",
-        error: ""
+        newPassword: "",
+        confirmPassword: ""
       };
       return _this;
     }
 
-    _createClass(Login, [{
-      key: "isValid",
-      value: function isValid() {
-        var valid = true;
-        var email = this.state.email;
-        var password = this.state.password;
-        console.log(email, password);
-        var re = /\S+@\S+\.\S+/;
-
-        if (email.length === 0 || password.length === 0) {
-          valid = false;
-          this.setState({
-            error: "Veuillez remplir tous les champs"
-          });
-        } else {
-          if (!re.test(email)) {
-            valid = false;
-            this.setState({
-              error: "Adresse email incorrecte"
-            });
-          }
-        }
-
-        return valid;
+    _createClass(UpdatePwd, [{
+      key: "setPassword",
+      value: function setPassword(newPassword) {
+        this.setState({
+          newPassword: newPassword
+        });
       }
     }, {
-      key: "connect",
-      value: function connect() {
-        if (this.isValid) console.log("validation connexion");else console.log("incorrect");
+      key: "setConfirmPassword",
+      value: function setConfirmPassword(confirmPassword) {
+        this.setState({
+          confirmPassword: confirmPassword
+        });
       }
     }, {
-      key: "goToRegister",
-      value: function goToRegister() {
-        console.log("page d'inscription");
-      }
-    }, {
-      key: "showError",
-      value: function showError() {
-        if (this.state.error.length > 0) return _react3.default.createElement(
-          _reactNative.Text,
-          {
-            style: {
-              color: "red",
-              fontSize: 12
-            },
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 42
-            }
-          },
-          this.state.error
-        );
+      key: "updatePassword",
+      value: function updatePassword() {
+        console.log(this.state.newPassword);
       }
     }, {
       key: "render",
@@ -128,89 +97,81 @@ __d(function (global, require, module, exports, _dependencyMap) {
             style: _Style2.default.view,
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 47
+              lineNumber: 39
             }
           },
           _react3.default.createElement(
             _reactNative.Text,
             {
               style: {
-                fontSize: 27,
                 color: _Style2.default.color
               },
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 48
+                lineNumber: 40
               }
             },
-            "Login"
+            "Nouveau mot de passe :"
           ),
           _react3.default.createElement(_reactNative.TextInput, {
-            placeholder: "Email",
-            onChangeText: function onChangeText(email) {
-              return _this2.setState({
-                email: email
-              });
+            placeholder: "Nouveau mot de passe",
+            onChangeText: function onChangeText(newPassword) {
+              return _this2.setPassword(newPassword);
             },
-            style: _Style2.default.textInput,
-            keyboardType: "email-address",
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 49
-            }
-          }),
-          _react3.default.createElement(_reactNative.TextInput, {
-            placeholder: "Mot de passe",
-            onChangeText: function onChangeText(password) {
-              return _this2.setState({
-                password: password
-              });
-            },
-            style: _Style2.default.textInput,
             secureTextEntry: true,
+            value: this.state.newPassword,
+            style: _Style2.default.textInput,
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 55
+              lineNumber: 41
             }
           }),
-          this.showError(),
-          _react3.default.createElement(
-            _reactNative.View,
-            {
-              style: {
-                margin: 7
-              },
-              __source: {
-                fileName: _jsxFileName,
-                lineNumber: 62
-              }
+          _react3.default.createElement(_reactNative.TextInput, {
+            placeholder: "Nouvelle adresse",
+            onChangeText: function onChangeText(confirmPassword) {
+              return _this2.setConfirmPassword(confirmPassword);
             },
-            _react3.default.createElement(_reactNative.Button, {
-              onPress: this.connect,
-              title: "Me connecter",
-              __source: {
-                fileName: _jsxFileName,
-                lineNumber: 63
-              }
-            })
-          ),
+            onSubmitEditing: function onSubmitEditing() {
+              return _this2.updatePassword();
+            },
+            secureTextEntry: true,
+            value: this.state.confirmPassword,
+            style: _Style2.default.textInput,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 48
+            }
+          }),
           _react3.default.createElement(_reactNative.Button, {
-            onPress: this.goToRegister,
             style: {
               marginTop: 10
             },
-            title: "Inscription",
+            title: "Changer",
+            onPress: function onPress() {
+              return _this2.updatePassword();
+            },
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 65
+              lineNumber: 58
             }
           })
         );
       }
     }]);
 
-    return Login;
-  }(_react3.default.Component));
+    return UpdatePwd;
+  }(_react3.default.Component), _class.navigationOptions = {
+    title: "Modifier mot de passe",
+    tabBarIcon: function tabBarIcon() {
+      return _react3.default.createElement(_reactNative.Image, {
+        source: require(_dependencyMap[5], "./icons/settings.png"),
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 17
+        }
+      });
+    }
+  }, _temp));
 
-  exports.default = Login;
+  exports.default = UpdatePwd;
 });

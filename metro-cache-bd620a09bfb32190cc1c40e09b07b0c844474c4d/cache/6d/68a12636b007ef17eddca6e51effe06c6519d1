@@ -29,6 +29,10 @@ __d(function (global, require, module, exports, _dependencyMap) {
 
   var _reactNavigation = require(_dependencyMap[5], "react-navigation");
 
+  var _UpdateMail = require(_dependencyMap[6], "./UpdateMail");
+
+  var _UpdateMail2 = _interopRequireDefault(_UpdateMail);
+
   function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
   function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -59,16 +63,18 @@ __d(function (global, require, module, exports, _dependencyMap) {
   var Settings = _wrapComponent("Settings")((_temp = _class = function (_React$Component) {
     _inherits(Settings, _React$Component);
 
-    function Settings() {
+    function Settings(props) {
       _classCallCheck(this, Settings);
 
-      return _possibleConstructorReturn(this, (Settings.__proto__ || Object.getPrototypeOf(Settings)).call(this));
+      return _possibleConstructorReturn(this, (Settings.__proto__ || Object.getPrototypeOf(Settings)).call(this, props));
     }
 
     _createClass(Settings, [{
       key: "updateMail",
       value: function updateMail() {
-        console.log("Modif mail");
+        _reactNative.Keyboard.dismiss();
+
+        this.props.navigation.navigate("UpdateMail");
       }
     }, {
       key: "updatePwd",
@@ -83,6 +89,8 @@ __d(function (global, require, module, exports, _dependencyMap) {
     }, {
       key: "render",
       value: function render() {
+        var _this2 = this;
+
         return _react3.default.createElement(
           _reactNative.View,
           {
@@ -92,7 +100,7 @@ __d(function (global, require, module, exports, _dependencyMap) {
             },
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 32
+              lineNumber: 34
             }
           },
           _react3.default.createElement(
@@ -104,7 +112,7 @@ __d(function (global, require, module, exports, _dependencyMap) {
               },
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 33
+                lineNumber: 35
               }
             },
             _react3.default.createElement(
@@ -114,7 +122,7 @@ __d(function (global, require, module, exports, _dependencyMap) {
                 defaultItemSize: 50,
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 34
+                  lineNumber: 36
                 }
               },
               _react3.default.createElement(_reactNativeSettingsList2.default.Item, {
@@ -124,7 +132,7 @@ __d(function (global, require, module, exports, _dependencyMap) {
                     style: styles.imageStyle,
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 37
+                      lineNumber: 39
                     }
                   },
                   _react3.default.createElement(_reactNative.Image, {
@@ -133,10 +141,10 @@ __d(function (global, require, module, exports, _dependencyMap) {
                       height: 22,
                       width: 22
                     },
-                    source: require(_dependencyMap[6], "./icons/account.png"),
+                    source: require(_dependencyMap[7], "./icons/account.png"),
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 38
+                      lineNumber: 40
                     }
                   })
                 ),
@@ -147,10 +155,12 @@ __d(function (global, require, module, exports, _dependencyMap) {
                   fontSize: 16
                 },
                 title: "Modifier email",
-                onPress: this.updateMail,
+                onPress: function onPress() {
+                  return _this2.updateMail();
+                },
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 35
+                  lineNumber: 37
                 }
               }),
               _react3.default.createElement(_reactNativeSettingsList2.default.Item, {
@@ -160,7 +170,7 @@ __d(function (global, require, module, exports, _dependencyMap) {
                     style: styles.imageStyle,
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 52
+                      lineNumber: 54
                     }
                   },
                   _react3.default.createElement(_reactNative.Image, {
@@ -169,10 +179,10 @@ __d(function (global, require, module, exports, _dependencyMap) {
                       height: 22,
                       width: 22
                     },
-                    source: require(_dependencyMap[7], "./icons/lock.png"),
+                    source: require(_dependencyMap[8], "./icons/lock.png"),
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 53
+                      lineNumber: 55
                     }
                   })
                 ),
@@ -186,7 +196,7 @@ __d(function (global, require, module, exports, _dependencyMap) {
                 onPress: this.updatePwd,
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 50
+                  lineNumber: 52
                 }
               }),
               _react3.default.createElement(_reactNativeSettingsList2.default.Item, {
@@ -196,19 +206,19 @@ __d(function (global, require, module, exports, _dependencyMap) {
                     style: styles.imageStyle,
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 67
+                      lineNumber: 69
                     }
                   },
                   _react3.default.createElement(_reactNative.Image, {
                     style: {
                       alignSelf: "center",
-                      height: 4,
+                      height: 22,
                       width: 18
                     },
-                    source: require(_dependencyMap[8], "./icons/exit.png"),
+                    source: require(_dependencyMap[9], "./icons/exit.png"),
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 68
+                      lineNumber: 70
                     }
                   })
                 ),
@@ -222,7 +232,7 @@ __d(function (global, require, module, exports, _dependencyMap) {
                 onPress: this.logout,
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 65
+                  lineNumber: 67
                 }
               })
             )
@@ -236,10 +246,10 @@ __d(function (global, require, module, exports, _dependencyMap) {
     title: "Parametres",
     tabBarIcon: function tabBarIcon() {
       return _react3.default.createElement(_reactNative.Image, {
-        source: require(_dependencyMap[9], "./icons/settings.png"),
+        source: require(_dependencyMap[10], "./icons/settings.png"),
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 14
+          lineNumber: 15
         }
       });
     }
@@ -265,7 +275,11 @@ __d(function (global, require, module, exports, _dependencyMap) {
       screen: Settings,
       navigationOptions: navigationOptions
     },
-    Profile: {
+    UpdateMail: {
+      screen: _UpdateMail2.default,
+      navigationOptions: navigationOptions
+    },
+    UpdatePwd: {
       screen: Settings,
       navigationOptions: navigationOptions
     }
