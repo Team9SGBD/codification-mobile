@@ -22,7 +22,9 @@ class RoomList extends React.Component {
     super(props);
     this.state = {
       rooms: [],
-      userID: "5a7496cd184ba90014a66345"
+      userID: exampleUser.id,
+      reservedRoom: null,
+      isReservationConfirmed: false
     };
     try {
       AsyncStorage.setItem("userID", exampleUser.id);
@@ -56,7 +58,16 @@ class RoomList extends React.Component {
       .then(response => {
         this.setState({ rooms: response.data });
       })
-      .catch(error => error);
+      .catch(error => console.log(error));
+  }
+
+  codifier(room) {
+    return axios
+      .post(`${baseURL}Accounts/${exampleUser.id}/reservation`, {
+        chambreId: room.idchambre
+      })
+      .then(() => console.log("reservation success"))
+      .catch(error => console.log(error));
   }
 
   render() {
@@ -70,7 +81,11 @@ class RoomList extends React.Component {
           enableEmptySections={true}
           dataSource={ds.cloneWithRows(this.state.rooms)}
           renderRow={(row, j, k) => (
-            <BuildingRow room={row} index={parseInt(k, 10)} />
+            <BuildingRow
+              codifier={this.codifier}
+              room={row}
+              index={parseInt(k, 10)}
+            />
           )}
         />
       );

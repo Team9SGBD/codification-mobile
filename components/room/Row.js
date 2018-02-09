@@ -5,6 +5,9 @@ import globalStyle from "../../Style";
 import { StackNavigator } from "react-navigation";
 
 export default class Row extends React.Component {
+  constructor(props) {
+    super(props);
+  }
   static propTypes = {
     room: PropTypes.object,
     index: PropTypes.number
@@ -12,29 +15,27 @@ export default class Row extends React.Component {
 
   room() {
     return (
-      <View>
-        <Text style={[style.white, style.bold]}>
-          Chambre {this.props.room.numchambre}
-        </Text>
-        <View style={{ flex: 1, flexDirection: "row" }}>
-          <Text style={style.white}>{this.props.room.nombatiment}</Text>
-          <Text style={style.white}> - Etage {this.props.room.numetage}</Text>
+      <View style={style.view}>
+        <View style={{ flex: 1, flexDirection: "column" }}>
+          <Text style={[style.white, style.bold]}>
+            Chambre {this.props.room.numchambre}
+          </Text>
+          <View style={{ flex: 1, flexDirection: "row" }}>
+            <Text style={style.white}>{this.props.room.nombatiment}</Text>
+            <Text style={style.white}> - Etage {this.props.room.numetage}</Text>
+          </View>
         </View>
+        <Button
+          onPress={() => this.props.codifier(this.props.room)}
+          title="Codifier"
+          color="green"
+        />
       </View>
     );
-  }
-
-  goToDetails() {
-    console.log("codification success");
   }
 
   render() {
-    return (
-      <View style={style.view}>
-        {this.room()}
-        <Button onPress={this.goToDetails} title="Codifier" color="green" />
-      </View>
-    );
+    return this.room();
   }
 }
 

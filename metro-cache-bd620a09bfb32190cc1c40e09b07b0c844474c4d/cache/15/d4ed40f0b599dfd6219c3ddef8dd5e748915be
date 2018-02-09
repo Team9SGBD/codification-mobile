@@ -59,41 +59,32 @@ __d(function (global, require, module, exports, _dependencyMap) {
   var Row = _wrapComponent("Row")((_temp = _class = function (_React$Component) {
     _inherits(Row, _React$Component);
 
-    function Row() {
+    function Row(props) {
       _classCallCheck(this, Row);
 
-      return _possibleConstructorReturn(this, (Row.__proto__ || Object.getPrototypeOf(Row)).apply(this, arguments));
+      return _possibleConstructorReturn(this, (Row.__proto__ || Object.getPrototypeOf(Row)).call(this, props));
     }
 
     _createClass(Row, [{
       key: "room",
       value: function room() {
+        var _this2 = this;
+
         return _react3.default.createElement(
           _reactNative.View,
           {
+            style: style.view,
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 15
+              lineNumber: 18
             }
           },
-          _react3.default.createElement(
-            _reactNative.Text,
-            {
-              style: [style.white, style.bold],
-              __source: {
-                fileName: _jsxFileName,
-                lineNumber: 16
-              }
-            },
-            "Chambre ",
-            this.props.room.numchambre
-          ),
           _react3.default.createElement(
             _reactNative.View,
             {
               style: {
                 flex: 1,
-                flexDirection: "row"
+                flexDirection: "column"
               },
               __source: {
                 fileName: _jsxFileName,
@@ -103,57 +94,69 @@ __d(function (global, require, module, exports, _dependencyMap) {
             _react3.default.createElement(
               _reactNative.Text,
               {
-                style: style.white,
+                style: [style.white, style.bold],
                 __source: {
                   fileName: _jsxFileName,
                   lineNumber: 20
                 }
               },
-              this.props.room.nombatiment
+              "Chambre ",
+              this.props.room.numchambre
             ),
             _react3.default.createElement(
-              _reactNative.Text,
+              _reactNative.View,
               {
-                style: style.white,
+                style: {
+                  flex: 1,
+                  flexDirection: "row"
+                },
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 21
+                  lineNumber: 23
                 }
               },
-              " - Etage ",
-              this.props.room.numetage
+              _react3.default.createElement(
+                _reactNative.Text,
+                {
+                  style: style.white,
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 24
+                  }
+                },
+                this.props.room.nombatiment
+              ),
+              _react3.default.createElement(
+                _reactNative.Text,
+                {
+                  style: style.white,
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 25
+                  }
+                },
+                " - Etage ",
+                this.props.room.numetage
+              )
             )
-          )
-        );
-      }
-    }, {
-      key: "goToDetails",
-      value: function goToDetails() {
-        console.log("codification success");
-      }
-    }, {
-      key: "render",
-      value: function render() {
-        return _react3.default.createElement(
-          _reactNative.View,
-          {
-            style: style.view,
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 33
-            }
-          },
-          this.room(),
+          ),
           _react3.default.createElement(_reactNative.Button, {
-            onPress: this.goToDetails,
+            onPress: function onPress() {
+              return _this2.props.codifier(_this2.props.room);
+            },
             title: "Codifier",
             color: "green",
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 35
+              lineNumber: 28
             }
           })
         );
+      }
+    }, {
+      key: "render",
+      value: function render() {
+        return this.room();
       }
     }]);
 

@@ -23,6 +23,14 @@ __d(function (global, require, module, exports, _dependencyMap) {
 
   var _Style2 = _interopRequireDefault(_Style);
 
+  var _axios = require(_dependencyMap[4], "axios");
+
+  var _axios2 = _interopRequireDefault(_axios);
+
+  var _moment = require(_dependencyMap[5], "moment");
+
+  var _moment2 = _interopRequireDefault(_moment);
+
   function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
   function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -50,32 +58,228 @@ __d(function (global, require, module, exports, _dependencyMap) {
     };
   }
 
+  var baseURL = "http://codificationcoud-esp.herokuapp.com/api/";
+  var exampleUser = {
+    id: "5a7496cd184ba90014a66345"
+  };
+
   var ReservationState = _wrapComponent("ReservationState")((_temp = _class = function (_React$Component) {
     _inherits(ReservationState, _React$Component);
 
-    function ReservationState() {
+    function ReservationState(props) {
       _classCallCheck(this, ReservationState);
 
-      return _possibleConstructorReturn(this, (ReservationState.__proto__ || Object.getPrototypeOf(ReservationState)).apply(this, arguments));
+      var _this = _possibleConstructorReturn(this, (ReservationState.__proto__ || Object.getPrototypeOf(ReservationState)).call(this, props));
+
+      _this.componentDidMount = function () {
+        _this.getReservation();
+      };
+
+      _this.state = {
+        userId: exampleUser.id,
+        reservation: null
+      };
+      return _this;
     }
 
     _createClass(ReservationState, [{
-      key: "render",
-      value: function render() {
-        return _react3.default.createElement(
+      key: "getReservation",
+      value: function getReservation() {
+        var _this2 = this;
+
+        return _axios2.default.get(baseURL + "Accounts/" + exampleUser.id + "/reservation").then(function (response) {
+          _this2.setState({
+            reservation: response.data
+          });
+        }).catch(function (error) {
+          return console.log(error);
+        });
+      }
+    }, {
+      key: "confirmation",
+      value: function confirmation() {
+        return this.state.reservation.confirmation ? _react3.default.createElement(
           _reactNative.Text,
           {
             style: {
               color: _Style2.default.color,
-              fontSize: 35
+              fontSize: 17,
+              marginLeft: 5
             },
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 14
+              lineNumber: 42
             }
           },
-          "Etat reservation"
+          "Oui"
+        ) : _react3.default.createElement(
+          _reactNative.Text,
+          {
+            style: {
+              color: _Style2.default.color,
+              fontSize: 17,
+              marginLeft: 5
+            },
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 46
+            }
+          },
+          "Non"
         );
+      }
+    }, {
+      key: "render",
+      value: function render() {
+        if (this.state.reservation !== null) {
+          return _react3.default.createElement(
+            _reactNative.View,
+            {
+              style: [_Style2.default.view, {
+                marginVertical: 10
+              }],
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 55
+              }
+            },
+            _react3.default.createElement(
+              _reactNative.Text,
+              {
+                style: [_Style2.default.bold, {
+                  fontSize: 27,
+                  color: _Style2.default.color
+                }],
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 56
+                }
+              },
+              "Etat r\xE9servation :"
+            ),
+            _react3.default.createElement(
+              _reactNative.View,
+              {
+                style: {
+                  flex: 1,
+                  flexDirection: "row"
+                },
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 59
+                }
+              },
+              _react3.default.createElement(
+                _reactNative.Text,
+                {
+                  style: [_Style2.default.bold, {
+                    fontSize: 20,
+                    color: _Style2.default.color
+                  }],
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 60
+                  }
+                },
+                "Date r\xE9servation :"
+              ),
+              _react3.default.createElement(
+                _reactNative.Text,
+                {
+                  style: {
+                    color: _Style2.default.color,
+                    fontSize: 17,
+                    marginLeft: 5
+                  },
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 63
+                  }
+                },
+                (0, _moment2.default)(this.state.reservation.datereserv).format("DD/MM/YY")
+              )
+            ),
+            _react3.default.createElement(
+              _reactNative.View,
+              {
+                style: {
+                  flex: 1,
+                  flexDirection: "row"
+                },
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 67
+                }
+              },
+              _react3.default.createElement(
+                _reactNative.Text,
+                {
+                  style: [_Style2.default.bold, {
+                    fontSize: 20,
+                    color: _Style2.default.color
+                  }],
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 68
+                  }
+                },
+                "Num\xE9ro de lit :"
+              ),
+              _react3.default.createElement(
+                _reactNative.Text,
+                {
+                  style: {
+                    color: _Style2.default.color,
+                    fontSize: 17,
+                    marginLeft: 5
+                  },
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 71
+                  }
+                },
+                this.state.reservation.position
+              )
+            ),
+            _react3.default.createElement(
+              _reactNative.View,
+              {
+                style: {
+                  flex: 1,
+                  flexDirection: "row"
+                },
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 75
+                }
+              },
+              _react3.default.createElement(
+                _reactNative.Text,
+                {
+                  style: [_Style2.default.bold, {
+                    fontSize: 20,
+                    color: _Style2.default.color
+                  }],
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 76
+                  }
+                },
+                "R\xE9servation confirm\xE9e :"
+              ),
+              this.confirmation()
+            )
+          );
+        } else {
+          return _react3.default.createElement(_reactNative.ActivityIndicator, {
+            color: _Style2.default.color,
+            size: "large",
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 85
+            }
+          });
+        }
       }
     }]);
 
@@ -84,10 +288,10 @@ __d(function (global, require, module, exports, _dependencyMap) {
     title: "Etat reservation",
     tabBarIcon: function tabBarIcon() {
       return _react3.default.createElement(_reactNative.Image, {
-        source: require(_dependencyMap[4], "./icons/eye.png"),
+        source: require(_dependencyMap[6], "./icons/eye.png"),
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 9
+          lineNumber: 23
         }
       });
     }
