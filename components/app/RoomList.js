@@ -26,6 +26,7 @@ class RoomList extends React.Component {
       reservedRoom: null,
       isReservationConfirmed: false
     };
+    this.getReservedRoom();
     try {
       AsyncStorage.setItem("userID", exampleUser.id);
     } catch (error) {
@@ -51,6 +52,15 @@ class RoomList extends React.Component {
       return <Image source={require("./icons/home.png")} />;
     }
   };
+
+  getReservedRoom() {
+    return axios
+      .get(`${baseURL}Accounts/${exampleUser.id}/reservation`)
+      .then(response => {
+        this.setState({ reservedRoom: response.data.chambreId });
+      })
+      .catch(error => console.log(error));
+  }
 
   getRooms() {
     return axios

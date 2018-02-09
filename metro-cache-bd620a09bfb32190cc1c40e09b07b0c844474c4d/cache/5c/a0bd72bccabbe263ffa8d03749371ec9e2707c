@@ -96,6 +96,8 @@ __d(function (global, require, module, exports, _dependencyMap) {
         isReservationConfirmed: false
       };
 
+      _this.getReservedRoom();
+
       try {
         _reactNative.AsyncStorage.setItem("userID", exampleUser.id);
       } catch (error) {
@@ -106,12 +108,25 @@ __d(function (global, require, module, exports, _dependencyMap) {
     }
 
     _createClass(RoomList, [{
-      key: "getRooms",
-      value: function getRooms() {
+      key: "getReservedRoom",
+      value: function getReservedRoom() {
         var _this2 = this;
 
-        return _axios2.default.get(baseURL + "Accounts/" + this.state.userID + "/chambres_Accessibles").then(function (response) {
+        return _axios2.default.get(baseURL + "Accounts/" + exampleUser.id + "/reservation").then(function (response) {
           _this2.setState({
+            reservedRoom: response.data.chambreId
+          });
+        }).catch(function (error) {
+          return console.log(error);
+        });
+      }
+    }, {
+      key: "getRooms",
+      value: function getRooms() {
+        var _this3 = this;
+
+        return _axios2.default.get(baseURL + "Accounts/" + this.state.userID + "/chambres_Accessibles").then(function (response) {
+          _this3.setState({
             rooms: response.data
           });
         }).catch(function (error) {
@@ -132,7 +147,7 @@ __d(function (global, require, module, exports, _dependencyMap) {
     }, {
       key: "render",
       value: function render() {
-        var _this3 = this;
+        var _this4 = this;
 
         var ds = new _reactNative.ListView.DataSource({
           rowHasChanged: function rowHasChanged(r1, r2) {
@@ -146,18 +161,18 @@ __d(function (global, require, module, exports, _dependencyMap) {
             dataSource: ds.cloneWithRows(this.state.rooms),
             renderRow: function renderRow(row, j, k) {
               return _react3.default.createElement(_Row2.default, {
-                codifier: _this3.codifier,
+                codifier: _this4.codifier,
                 room: row,
                 index: parseInt(k, 10),
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 84
+                  lineNumber: 94
                 }
               });
             },
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 80
+              lineNumber: 90
             }
           });
         } else {
@@ -166,7 +181,7 @@ __d(function (global, require, module, exports, _dependencyMap) {
             size: "large",
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 93
+              lineNumber: 103
             }
           });
         }
@@ -181,7 +196,7 @@ __d(function (global, require, module, exports, _dependencyMap) {
         source: require(_dependencyMap[7], "./icons/home.png"),
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 51
+          lineNumber: 52
         }
       });
     }
