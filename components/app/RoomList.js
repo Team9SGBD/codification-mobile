@@ -2,6 +2,7 @@ import React from "react";
 import {
   Text,
   ListView,
+  View,
   Image,
   ActivityIndicator,
   AsyncStorage
@@ -73,10 +74,14 @@ class RoomList extends React.Component {
 
   codifier(room) {
     return axios
-      .post(`${baseURL}Accounts/${exampleUser.id}/reservation`, {
-        chambreId: room.idchambre
+      .get(
+        `${baseURL}Chambres/${room.idchambre}/reserverChambre?accountId=${
+          exampleUser.id
+        }`
+      )
+      .then(() => {
+        console.log("reservation success");
       })
-      .then(() => console.log("reservation success"))
       .catch(error => console.log(error));
   }
 
@@ -85,6 +90,39 @@ class RoomList extends React.Component {
       rowHasChanged: (r1, r2) => r1 !== r2
     });
 
+    /*if (this.state.reservedRoom !== null) {
+      return (
+        <View style={{ flex: 1, margin: 10, alignItems: "center" }}>
+          <Text style={[style.bold, { fontSize: 27, color: style.color }]}>
+            Chambre réservée :
+          </Text>
+          <View style={{ flex: 1, flexDirection: "row" }}>
+            <Text style={[style.bold, { fontSize: 20, color: style.color }]}>
+              Numéro de chambre :
+            </Text>
+            <Text style={{ color: style.color, fontSize: 17, marginLeft: 5 }}>
+              {this.state.reservedRoom.numchambre}
+            </Text>
+          </View>
+          <View style={{ flex: 1, flexDirection: "row" }}>
+            <Text style={[style.bold, { fontSize: 20, color: style.color }]}>
+              Batiment :
+            </Text>
+            <Text style={{ color: style.color, fontSize: 17, marginLeft: 5 }}>
+              {this.state.reservedRoom.nombatiment}
+            </Text>
+          </View>
+          <View style={{ flex: 1, flexDirection: "row" }}>
+            <Text style={[style.bold, { fontSize: 20, color: style.color }]}>
+              Etage :
+            </Text>
+            <Text style={{ color: style.color, fontSize: 17, marginLeft: 5 }}>
+              {this.state.reservedRoom.numetage}
+            </Text>
+          </View>
+        </View>
+      );
+    } else { */
     if (this.state.rooms.length > 0) {
       return (
         <ListView
@@ -102,6 +140,7 @@ class RoomList extends React.Component {
     } else {
       return <ActivityIndicator color={style.color} size="large" />;
     }
+    //}
   }
 }
 

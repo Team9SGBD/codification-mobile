@@ -136,10 +136,8 @@ __d(function (global, require, module, exports, _dependencyMap) {
     }, {
       key: "codifier",
       value: function codifier(room) {
-        return _axios2.default.post(baseURL + "Accounts/" + exampleUser.id + "/reservation", {
-          chambreId: room.idchambre
-        }).then(function () {
-          return console.log("reservation success");
+        return _axios2.default.get(baseURL + "Chambres/" + room.idchambre + "/reserverChambre?accountId=" + exampleUser.id).then(function () {
+          console.log("reservation success");
         }).catch(function (error) {
           return console.log(error);
         });
@@ -166,13 +164,13 @@ __d(function (global, require, module, exports, _dependencyMap) {
                 index: parseInt(k, 10),
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 94
+                  lineNumber: 132
                 }
               });
             },
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 90
+              lineNumber: 128
             }
           });
         } else {
@@ -181,7 +179,7 @@ __d(function (global, require, module, exports, _dependencyMap) {
             size: "large",
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 103
+              lineNumber: 141
             }
           });
         }
@@ -196,7 +194,7 @@ __d(function (global, require, module, exports, _dependencyMap) {
         source: require(_dependencyMap[7], "./icons/home.png"),
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 52
+          lineNumber: 53
         }
       });
     }

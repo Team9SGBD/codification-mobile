@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, Image, View, ActivityIndicator } from "react-native";
+import { Text, Image, View, ActivityIndicator, Button } from "react-native";
 import style from "../../Style";
 import axios from "axios";
 import moment from "moment";
@@ -14,7 +14,8 @@ export default class ReservationState extends React.Component {
     super(props);
     this.state = {
       userId: exampleUser.id,
-      reservation: null
+      reservation: null,
+      errorCode: 200
     };
   }
   static navigationOptions = {
@@ -30,11 +31,11 @@ export default class ReservationState extends React.Component {
 
   getReservation() {
     return axios
-      .get(`${baseURL}Accounts/${exampleUser.id}/reservation`)
+      .get(`${baseURL}Accounts/${this.state.userId}/reservation`)
       .then(response => {
         this.setState({ reservation: response.data });
       })
-      .catch(error => console.log(error));
+      .catch(response => console.log(response.statusCode));
   }
 
   confirmation() {
@@ -49,10 +50,18 @@ export default class ReservationState extends React.Component {
     );
   }
 
+  annulerReservation() {
+    console.log("annuler reservation");
+  }
+
+  confirmerReservation() {
+    console.log("confirmer reservation");
+  }
+
   render() {
     if (this.state.reservation !== null) {
       return (
-        <View style={[style.view, { marginVertical: 10 }]}>
+        <View style={{ flex: 1, margin: 10, alignItems: "center" }}>
           <Text style={[style.bold, { fontSize: 27, color: style.color }]}>
             Etat réservation :
           </Text>
@@ -79,10 +88,35 @@ export default class ReservationState extends React.Component {
 
             {this.confirmation()}
           </View>
+          <View
+            style={{
+              flex: 0.3,
+              flexDirection: "row",
+              justifyContent: "space-between"
+            }}
+          >
+            <Button
+              color="red"
+              onPress={this.annulerReservation}
+              title="Annuler"
+              style={{ height: 10, width: 10 }}
+            />
+            <Button
+              color="green"
+              onPress={this.confirmerReservation}
+              title="Confirmer"
+            />
+          </View>
         </View>
       );
     } else {
-      return <ActivityIndicator color={style.color} size="large" />;
+      if (this.state.errorCode !== 200)
+        return (
+          <Text style={[style.bold, { color: style.color }]}>
+            Vous n'avez fait aucune réservation
+          </Text>
+        );
+      else return <ActivityIndicator color={style.color} size="large" />;
     }
   }
 }

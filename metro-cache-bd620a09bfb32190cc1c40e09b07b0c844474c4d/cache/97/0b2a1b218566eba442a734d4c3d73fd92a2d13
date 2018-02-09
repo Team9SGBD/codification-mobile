@@ -96,6 +96,8 @@ __d(function (global, require, module, exports, _dependencyMap) {
         isReservationConfirmed: false
       };
 
+      _this.getReservedRoom();
+
       try {
         _reactNative.AsyncStorage.setItem("userID", exampleUser.id);
       } catch (error) {
@@ -106,12 +108,25 @@ __d(function (global, require, module, exports, _dependencyMap) {
     }
 
     _createClass(RoomList, [{
-      key: "getRooms",
-      value: function getRooms() {
+      key: "getReservedRoom",
+      value: function getReservedRoom() {
         var _this2 = this;
 
-        return _axios2.default.get(baseURL + "Accounts/" + this.state.userID + "/chambres_Accessibles").then(function (response) {
+        return _axios2.default.get(baseURL + "Accounts/" + exampleUser.id + "/reservation").then(function (response) {
           _this2.setState({
+            reservedRoom: response.data.chambreId
+          });
+        }).catch(function (error) {
+          return console.log(error);
+        });
+      }
+    }, {
+      key: "getRooms",
+      value: function getRooms() {
+        var _this3 = this;
+
+        return _axios2.default.get(baseURL + "Accounts/" + this.state.userID + "/chambres_Accessibles").then(function (response) {
+          _this3.setState({
             rooms: response.data
           });
         }).catch(function (error) {
@@ -121,10 +136,14 @@ __d(function (global, require, module, exports, _dependencyMap) {
     }, {
       key: "codifier",
       value: function codifier(room) {
-        return _axios2.default.post(baseURL + "Accounts/" + exampleUser.id + "/reservation", {
-          chambreId: room.idchambre
-        }).then(function () {
-          return console.log("reservation success");
+        var _this4 = this;
+
+        return _axios2.default.get(baseURL + "Chambres/" + room.idchambre + "/reserverChambre?accountId=" + exampleUser.id).then(function () {
+          console.log("reservation success");
+
+          _this4.setState({
+            reservedRoom: room
+          });
         }).catch(function (error) {
           return console.log(error);
         });
@@ -132,7 +151,7 @@ __d(function (global, require, module, exports, _dependencyMap) {
     }, {
       key: "render",
       value: function render() {
-        var _this3 = this;
+        var _this5 = this;
 
         var ds = new _reactNative.ListView.DataSource({
           rowHasChanged: function rowHasChanged(r1, r2) {
@@ -140,35 +159,192 @@ __d(function (global, require, module, exports, _dependencyMap) {
           }
         });
 
-        if (this.state.rooms.length > 0) {
-          return _react3.default.createElement(_reactNative.ListView, {
-            enableEmptySections: true,
-            dataSource: ds.cloneWithRows(this.state.rooms),
-            renderRow: function renderRow(row, j, k) {
-              return _react3.default.createElement(_Row2.default, {
-                codifier: _this3.codifier,
-                room: row,
-                index: parseInt(k, 10),
+        if (this.state.reservedRoom !== null) {
+          return _react3.default.createElement(
+            View,
+            {
+              style: {
+                flex: 1,
+                margin: 10,
+                alignItems: "center"
+              },
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 95
+              }
+            },
+            _react3.default.createElement(
+              _reactNative.Text,
+              {
+                style: [_Style2.default.bold, {
+                  fontSize: 27,
+                  color: _Style2.default.color
+                }],
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 84
+                  lineNumber: 96
                 }
-              });
-            },
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 80
-            }
-          });
+              },
+              "Chambre r\xE9serv\xE9e :"
+            ),
+            _react3.default.createElement(
+              View,
+              {
+                style: {
+                  flex: 1,
+                  flexDirection: "row"
+                },
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 99
+                }
+              },
+              _react3.default.createElement(
+                _reactNative.Text,
+                {
+                  style: [_Style2.default.bold, {
+                    fontSize: 20,
+                    color: _Style2.default.color
+                  }],
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 100
+                  }
+                },
+                "Num\xE9ro de chambre :"
+              ),
+              _react3.default.createElement(
+                _reactNative.Text,
+                {
+                  style: {
+                    color: _Style2.default.color,
+                    fontSize: 17,
+                    marginLeft: 5
+                  },
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 103
+                  }
+                },
+                this.state.reservedRoom.numchambre
+              )
+            ),
+            _react3.default.createElement(
+              View,
+              {
+                style: {
+                  flex: 1,
+                  flexDirection: "row"
+                },
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 107
+                }
+              },
+              _react3.default.createElement(
+                _reactNative.Text,
+                {
+                  style: [_Style2.default.bold, {
+                    fontSize: 20,
+                    color: _Style2.default.color
+                  }],
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 108
+                  }
+                },
+                "Batiment :"
+              ),
+              _react3.default.createElement(
+                _reactNative.Text,
+                {
+                  style: {
+                    color: _Style2.default.color,
+                    fontSize: 17,
+                    marginLeft: 5
+                  },
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 111
+                  }
+                },
+                this.state.reservedRoom.nombatiment
+              )
+            ),
+            _react3.default.createElement(
+              View,
+              {
+                style: {
+                  flex: 1,
+                  flexDirection: "row"
+                },
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 115
+                }
+              },
+              _react3.default.createElement(
+                _reactNative.Text,
+                {
+                  style: [_Style2.default.bold, {
+                    fontSize: 20,
+                    color: _Style2.default.color
+                  }],
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 116
+                  }
+                },
+                "Etage :"
+              ),
+              _react3.default.createElement(
+                _reactNative.Text,
+                {
+                  style: {
+                    color: _Style2.default.color,
+                    fontSize: 17,
+                    marginLeft: 5
+                  },
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 119
+                  }
+                },
+                this.state.reservedRoom.numetage
+              )
+            )
+          );
         } else {
-          return _react3.default.createElement(_reactNative.ActivityIndicator, {
-            color: _Style2.default.color,
-            size: "large",
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 93
-            }
-          });
+          if (this.state.rooms.length > 0) {
+            return _react3.default.createElement(_reactNative.ListView, {
+              enableEmptySections: true,
+              dataSource: ds.cloneWithRows(this.state.rooms),
+              renderRow: function renderRow(row, j, k) {
+                return _react3.default.createElement(_Row2.default, {
+                  codifier: _this5.codifier,
+                  room: row,
+                  index: parseInt(k, 10),
+                  __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 132
+                  }
+                });
+              },
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 128
+              }
+            });
+          } else {
+            return _react3.default.createElement(_reactNative.ActivityIndicator, {
+              color: _Style2.default.color,
+              size: "large",
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 141
+              }
+            });
+          }
         }
       }
     }]);
@@ -181,7 +357,7 @@ __d(function (global, require, module, exports, _dependencyMap) {
         source: require(_dependencyMap[7], "./icons/home.png"),
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 51
+          lineNumber: 52
         }
       });
     }
