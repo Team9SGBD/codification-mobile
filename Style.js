@@ -15,6 +15,11 @@ export default {
     alignItems: "center"
   },
 
+  comingSoon: {
+    height: 200,
+    width: 300
+  },
+
   loginBox: {
     width: 300,
     height: 300,

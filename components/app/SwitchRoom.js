@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, Image } from "react-native";
+import { Text, Image, View } from "react-native";
 import style from "../../Style";
 
 export default class SwitchRooms extends React.Component {
@@ -11,7 +11,12 @@ export default class SwitchRooms extends React.Component {
   };
   render() {
     return (
-      <Text style={{ color: style.color, fontSize: 35 }}>Echange chambre</Text>
+      <View style={style.view}>
+        <Image
+          source={require("./images/coming-soon.png")}
+          style={style.comingSoon}
+        />
+      </View>
     );
   }
 }

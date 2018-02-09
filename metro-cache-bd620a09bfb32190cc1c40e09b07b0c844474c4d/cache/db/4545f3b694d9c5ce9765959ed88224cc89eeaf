@@ -265,9 +265,9 @@ __d(function (global, require, module, exports, _dependencyMap) {
                     lineNumber: 76
                   }
                 },
-                "R\xE9servation confirm\xE9 :"
+                "R\xE9servation confirm\xE9e :"
               ),
-              this.confirmation
+              this.confirmation()
             )
           );
         } else {

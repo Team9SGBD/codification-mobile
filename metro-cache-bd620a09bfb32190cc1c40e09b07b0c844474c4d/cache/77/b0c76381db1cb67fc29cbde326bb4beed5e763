@@ -63,18 +63,22 @@ __d(function (global, require, module, exports, _dependencyMap) {
       key: "render",
       value: function render() {
         return _react3.default.createElement(
-          _reactNative.Text,
+          _reactNative.View,
           {
-            style: {
-              color: _Style2.default.color,
-              fontSize: 35
-            },
+            style: _Style2.default.view,
             __source: {
               fileName: _jsxFileName,
               lineNumber: 14
             }
           },
-          "Echange chambre"
+          _react3.default.createElement(_reactNative.Image, {
+            source: require(_dependencyMap[4], "./images/coming-soon.png"),
+            style: _Style2.default.comingSoon,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 15
+            }
+          })
         );
       }
     }]);
@@ -84,7 +88,7 @@ __d(function (global, require, module, exports, _dependencyMap) {
     title: "Echange de chambres",
     tabBarIcon: function tabBarIcon() {
       return _react3.default.createElement(_reactNative.Image, {
-        source: require(_dependencyMap[4], "./icons/switch.png"),
+        source: require(_dependencyMap[5], "./icons/switch.png"),
         __source: {
           fileName: _jsxFileName,
           lineNumber: 9
