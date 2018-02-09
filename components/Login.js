@@ -1,66 +1,66 @@
 import React from "react";
 import { ScrollView, Text, TextInput, View, Button } from "react-native";
 import style from "../Style";
+import ValidationComponent from "react-native-form-validator";
 
-export default class Login extends React.Component {
+export default class Login extends ValidationComponent {
   constructor(props) {
     super(props);
     this.state = {
       email: "",
-      password: "",
-      error: ""
+      password: ""
     };
   }
-  isValid() {
-    let valid = true;
-    const email = this.state.email;
-    const password = this.state.password;
-    console.log(email, password);
 
-    var re = /\S+@\S+\.\S+/;
-    if (email.length === 0 || password.length === 0) {
-      valid = false;
-      this.setState({ error: "Veuillez remplir tous les champs" });
-    } else {
-      if (!re.test(email)) {
-        valid = false;
-        this.setState({ error: "Adresse email incorrecte" });
-      }
+  _onSubmit() {
+    const validation = {
+      email: { email: true, required: true },
+      password: { minlength: 8, required: true }
+    };
+
+    this.validate(validation);
+    if (this.isFormValid()) {
+      console.log("all good");
     }
-    return valid;
   }
-  connect() {
-    if (this.isValid) console.log("validation connexion");
-    else console.log("incorrect");
+
+  setEmail(email) {
+    this.setState({ email: email });
   }
+
+  setPassword(password) {
+    this.setState({ password: password });
+  }
+
   goToRegister() {
     console.log("page d'inscription");
   }
-  showError() {
-    if (this.state.error.length > 0)
-      return (
-        <Text style={{ color: "red", fontSize: 12 }}>{this.state.error}</Text>
-      );
-  }
+
   render() {
     return (
       <View style={style.view}>
         <Text style={{ fontSize: 27, color: style.color }}>Login</Text>
         <TextInput
+          ref="email"
           placeholder="Email"
           onChangeText={email => this.setState({ email })}
+          value={this.state.email}
           style={style.textInput}
           keyboardType="email-address"
         />
         <TextInput
+          ref="password"
           placeholder="Mot de passe"
           onChangeText={password => this.setState({ password })}
+          value={this.state.password}
           style={style.textInput}
           secureTextEntry={true}
         />
-        {this.showError()}
+        <Text style={{ color: "red", fontSize: 12 }}>
+          {this.getErrorMessages()}
+        </Text>
         <View style={{ margin: 7 }}>
-          <Button onPress={this.connect} title="Me connecter" />
+          <Button onPress={this._onSubmit} title="Me connecter" />
         </View>
         <Button
           onPress={this.goToRegister}

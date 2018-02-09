@@ -95,6 +95,9 @@ __d(function (global, require, module, exports, _dependencyMap) {
           _react3.default.createElement(
             _reactNative.Text,
             {
+              style: {
+                color: _Style2.default.color
+              },
               __source: {
                 fileName: _jsxFileName,
                 lineNumber: 31
@@ -122,6 +125,7 @@ __d(function (global, require, module, exports, _dependencyMap) {
             style: {
               marginTop: 10
             },
+            title: "Changer",
             onPress: function onPress() {
               return _this2.updateMail();
             },

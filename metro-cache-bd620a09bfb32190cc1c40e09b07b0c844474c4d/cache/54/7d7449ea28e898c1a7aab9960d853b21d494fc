@@ -2,24 +2,24 @@ __d(function (global, require, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
   });
-
-  var _react2 = require(_dependencyMap[0], "react");
-
-  var _react3 = _interopRequireDefault(_react2);
-
-  var _index = require(_dependencyMap[1], "./../node_modules/react-transform-hmr/lib/index.js");
-
-  var _index2 = _interopRequireDefault(_index);
-
+  exports.default = undefined;
   var _jsxFileName = "/Users/Papi/Documents/dev/React Native/codification/components/Login.js";
 
   var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-  var _reactNative = require(_dependencyMap[2], "react-native");
+  var _react = require(_dependencyMap[0], "react");
 
-  var _Style = require(_dependencyMap[3], "../Style");
+  var _react2 = _interopRequireDefault(_react);
+
+  var _reactNative = require(_dependencyMap[1], "react-native");
+
+  var _Style = require(_dependencyMap[2], "../Style");
 
   var _Style2 = _interopRequireDefault(_Style);
+
+  var _reactNativeFormValidator = require(_dependencyMap[3], "react-native-form-validator");
+
+  var _reactNativeFormValidator2 = _interopRequireDefault(_reactNativeFormValidator);
 
   function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -29,27 +29,8 @@ __d(function (global, require, module, exports, _dependencyMap) {
 
   function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-  var _components = {
-    Login: {
-      displayName: "Login"
-    }
-  };
-
-  var _node_modulesReactTransformHmrLibIndexJs2 = (0, _index2.default)({
-    filename: "/Users/Papi/Documents/dev/React Native/codification/components/Login.js",
-    components: _components,
-    locals: [module],
-    imports: [_react3.default]
-  });
-
-  function _wrapComponent(id) {
-    return function (Component) {
-      return _node_modulesReactTransformHmrLibIndexJs2(Component, id);
-    };
-  }
-
-  var Login = _wrapComponent("Login")(function (_React$Component) {
-    _inherits(Login, _React$Component);
+  var Login = function (_ValidationComponent) {
+    _inherits(Login, _ValidationComponent);
 
     function Login(props) {
       _classCallCheck(this, Login);
@@ -58,41 +39,43 @@ __d(function (global, require, module, exports, _dependencyMap) {
 
       _this.state = {
         email: "",
-        password: "",
-        error: ""
+        password: ""
       };
       return _this;
     }
 
     _createClass(Login, [{
-      key: "isValid",
-      value: function isValid() {
-        var valid = true;
-        var email = this.state.email;
-        var password = this.state.password;
-        console.log(email, password);
-        var re = /\S+@\S+\.\S+/;
-
-        if (email.length === 0 || password.length === 0) {
-          valid = false;
-          this.setState({
-            error: "Veuillez remplir tous les champs"
-          });
-        } else {
-          if (!re.test(email)) {
-            valid = false;
-            this.setState({
-              error: "Adresse email incorrecte"
-            });
+      key: "_onSubmit",
+      value: function _onSubmit() {
+        var validation = {
+          email: {
+            email: true,
+            required: true
+          },
+          password: {
+            minlength: 8,
+            required: true
           }
-        }
+        };
+        this.validate(validation);
 
-        return valid;
+        if (this.isFormValid()) {
+          console.log("all good");
+        }
       }
     }, {
-      key: "connect",
-      value: function connect() {
-        if (this.isValid) console.log("validation connexion");else console.log("incorrect");
+      key: "setEmail",
+      value: function setEmail(email) {
+        this.setState({
+          email: email
+        });
+      }
+    }, {
+      key: "setPassword",
+      value: function setPassword(password) {
+        this.setState({
+          password: password
+        });
       }
     }, {
       key: "goToRegister",
@@ -100,38 +83,20 @@ __d(function (global, require, module, exports, _dependencyMap) {
         console.log("page d'inscription");
       }
     }, {
-      key: "showError",
-      value: function showError() {
-        if (this.state.error.length > 0) return _react3.default.createElement(
-          _reactNative.Text,
-          {
-            style: {
-              color: "red",
-              fontSize: 12
-            },
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 42
-            }
-          },
-          this.state.error
-        );
-      }
-    }, {
       key: "render",
       value: function render() {
         var _this2 = this;
 
-        return _react3.default.createElement(
+        return _react2.default.createElement(
           _reactNative.View,
           {
             style: _Style2.default.view,
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 47
+              lineNumber: 41
             }
           },
-          _react3.default.createElement(
+          _react2.default.createElement(
             _reactNative.Text,
             {
               style: {
@@ -140,41 +105,58 @@ __d(function (global, require, module, exports, _dependencyMap) {
               },
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 48
+                lineNumber: 42
               }
             },
             "Login"
           ),
-          _react3.default.createElement(_reactNative.TextInput, {
+          _react2.default.createElement(_reactNative.TextInput, {
+            ref: "email",
             placeholder: "Email",
             onChangeText: function onChangeText(email) {
               return _this2.setState({
                 email: email
               });
             },
+            value: this.state.email,
             style: _Style2.default.textInput,
             keyboardType: "email-address",
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 49
+              lineNumber: 43
             }
           }),
-          _react3.default.createElement(_reactNative.TextInput, {
+          _react2.default.createElement(_reactNative.TextInput, {
+            ref: "password",
             placeholder: "Mot de passe",
             onChangeText: function onChangeText(password) {
               return _this2.setState({
                 password: password
               });
             },
+            value: this.state.password,
             style: _Style2.default.textInput,
             secureTextEntry: true,
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 55
+              lineNumber: 51
             }
           }),
-          this.showError(),
-          _react3.default.createElement(
+          _react2.default.createElement(
+            _reactNative.Text,
+            {
+              style: {
+                color: "red",
+                fontSize: 12
+              },
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 59
+              }
+            },
+            this.getErrorMessages()
+          ),
+          _react2.default.createElement(
             _reactNative.View,
             {
               style: {
@@ -185,8 +167,8 @@ __d(function (global, require, module, exports, _dependencyMap) {
                 lineNumber: 62
               }
             },
-            _react3.default.createElement(_reactNative.Button, {
-              onPress: this.connect,
+            _react2.default.createElement(_reactNative.Button, {
+              onPress: this._onSubmit,
               title: "Me connecter",
               __source: {
                 fileName: _jsxFileName,
@@ -194,7 +176,7 @@ __d(function (global, require, module, exports, _dependencyMap) {
               }
             })
           ),
-          _react3.default.createElement(_reactNative.Button, {
+          _react2.default.createElement(_reactNative.Button, {
             onPress: this.goToRegister,
             style: {
               marginTop: 10
@@ -210,7 +192,7 @@ __d(function (global, require, module, exports, _dependencyMap) {
     }]);
 
     return Login;
-  }(_react3.default.Component));
+  }(_reactNativeFormValidator2.default);
 
   exports.default = Login;
 });

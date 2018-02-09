@@ -3,7 +3,7 @@ import RoomList from "./RoomList";
 import Settings from "./Settings";
 import SwitchRoom from "./SwitchRoom";
 import ReservationState from "./ReservationState";
-import { StatusBar, View } from "react-native";
+import { StatusBar, View, AsyncStorage } from "react-native";
 import { TabNavigator } from "react-navigation";
 import style from "../../Style";
 
@@ -33,6 +33,9 @@ const Tabs = TabNavigator(
 );
 
 export default class App extends React.Component {
+  constructor(props) {
+    super(props);
+  }
   render() {
     return (
       <View style={{ flex: 1 }}>

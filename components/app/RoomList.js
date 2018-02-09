@@ -1,23 +1,47 @@
 import React from "react";
-import { Text, ListView, Image, ActivityIndicator } from "react-native";
+import {
+  Text,
+  ListView,
+  Image,
+  ActivityIndicator,
+  AsyncStorage
+} from "react-native";
 import axios from "axios";
 import BuildingRow from "../room/Row";
 import style from "../../Style";
 import { StackNavigator } from "react-navigation";
 
+const baseURL = "http://codificationcoud-esp.herokuapp.com/api/";
+
 const exampleUser = {
   id: "5a7496cd184ba90014a66345"
 };
-const baseURL = "http://codificationcoud-esp.herokuapp.com/api/";
 
 class RoomList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      rooms: []
+      rooms: [],
+      userID: "5a7496cd184ba90014a66345"
     };
-    this.getRooms();
+    try {
+      AsyncStorage.setItem("userID", exampleUser.id);
+    } catch (error) {
+      console.log(error);
+    }
   }
+
+  componentDidMount = () => {
+    try {
+      AsyncStorage.getItem("userID").then(value =>
+        this.setState({ userID: value })
+      );
+      console.log(this.state.userID);
+    } catch (error) {
+      console.log(error);
+    }
+    if (this.state.userID !== "") this.getRooms();
+  };
 
   static navigationOptions = {
     title: "Chambres disponibles",
@@ -28,7 +52,7 @@ class RoomList extends React.Component {
 
   getRooms() {
     return axios
-      .get(`${baseURL}Accounts/${exampleUser.id}/chambres_Accessibles`)
+      .get(`${baseURL}Accounts/${this.state.userID}/chambres_Accessibles`)
       .then(response => {
         this.setState({ rooms: response.data });
       })

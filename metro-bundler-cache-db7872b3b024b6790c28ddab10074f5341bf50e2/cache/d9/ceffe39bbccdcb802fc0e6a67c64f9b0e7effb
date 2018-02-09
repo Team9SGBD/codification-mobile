@@ -1,0 +1,161 @@
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = undefined;
+var _jsxFileName = "/Users/Papi/Documents/dev/React Native/codification/components/Login.js";
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = require("react");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactNative = require("react-native");
+
+var _Style = require("../Style");
+
+var _Style2 = _interopRequireDefault(_Style);
+
+var _reactNativeFormValidator = require("react-native-form-validator");
+
+var _reactNativeFormValidator2 = _interopRequireDefault(_reactNativeFormValidator);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Login = function (_ValidationComponent) {
+  _inherits(Login, _ValidationComponent);
+
+  function Login(props) {
+    _classCallCheck(this, Login);
+
+    var _this = _possibleConstructorReturn(this, (Login.__proto__ || Object.getPrototypeOf(Login)).call(this, props));
+
+    _this.state = {
+      email: "",
+      password: ""
+    };
+    return _this;
+  }
+
+  _createClass(Login, [{
+    key: "_onSubmit",
+    value: function _onSubmit() {
+      var validation = {
+        email: { email: true, required: true },
+        password: { minlength: 8, required: true }
+      };
+
+      this.validate(validation);
+      if (this.isFormValid()) {
+        console.log("all good");
+      }
+    }
+  }, {
+    key: "setEmail",
+    value: function setEmail(email) {
+      this.setState({ email: email });
+    }
+  }, {
+    key: "setPassword",
+    value: function setPassword(password) {
+      this.setState({ password: password });
+    }
+  }, {
+    key: "goToRegister",
+    value: function goToRegister() {
+      console.log("page d'inscription");
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this2 = this;
+
+      return _react2.default.createElement(
+        _reactNative.View,
+        { style: _Style2.default.view, __source: {
+            fileName: _jsxFileName,
+            lineNumber: 41
+          }
+        },
+        _react2.default.createElement(
+          _reactNative.Text,
+          { style: { fontSize: 27, color: _Style2.default.color }, __source: {
+              fileName: _jsxFileName,
+              lineNumber: 42
+            }
+          },
+          "Login"
+        ),
+        _react2.default.createElement(_reactNative.TextInput, {
+          ref: "email",
+          placeholder: "Email",
+          onChangeText: function onChangeText(email) {
+            return _this2.setState({ email: email });
+          },
+          value: this.state.email,
+          style: _Style2.default.textInput,
+          keyboardType: "email-address",
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 43
+          }
+        }),
+        _react2.default.createElement(_reactNative.TextInput, {
+          ref: "password",
+          placeholder: "Mot de passe",
+          onChangeText: function onChangeText(password) {
+            return _this2.setState({ password: password });
+          },
+          value: this.state.password,
+          style: _Style2.default.textInput,
+          secureTextEntry: true,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 51
+          }
+        }),
+        _react2.default.createElement(
+          _reactNative.Text,
+          { style: { color: "red", fontSize: 12 }, __source: {
+              fileName: _jsxFileName,
+              lineNumber: 59
+            }
+          },
+          this.getErrorMessages()
+        ),
+        _react2.default.createElement(
+          _reactNative.View,
+          { style: { margin: 7 }, __source: {
+              fileName: _jsxFileName,
+              lineNumber: 62
+            }
+          },
+          _react2.default.createElement(_reactNative.Button, { onPress: this._onSubmit, title: "Me connecter", __source: {
+              fileName: _jsxFileName,
+              lineNumber: 63
+            }
+          })
+        ),
+        _react2.default.createElement(_reactNative.Button, {
+          onPress: this.goToRegister,
+          style: { marginTop: 10 },
+          title: "Inscription",
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 65
+          }
+        })
+      );
+    }
+  }]);
+
+  return Login;
+}(_reactNativeFormValidator2.default);
+
+exports.default = Login;

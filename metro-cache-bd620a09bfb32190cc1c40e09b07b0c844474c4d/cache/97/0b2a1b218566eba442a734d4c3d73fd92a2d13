@@ -60,10 +60,10 @@ __d(function (global, require, module, exports, _dependencyMap) {
     };
   }
 
+  var baseURL = "http://codificationcoud-esp.herokuapp.com/api/";
   var exampleUser = {
     id: "5a7496cd184ba90014a66345"
   };
-  var baseURL = "http://codificationcoud-esp.herokuapp.com/api/";
 
   var RoomList = _wrapComponent("RoomList")((_temp = _class = function (_React$Component) {
     _inherits(RoomList, _React$Component);
@@ -73,11 +73,36 @@ __d(function (global, require, module, exports, _dependencyMap) {
 
       var _this = _possibleConstructorReturn(this, (RoomList.__proto__ || Object.getPrototypeOf(RoomList)).call(this, props));
 
-      _this.state = {
-        rooms: []
+      _this.componentDidMount = function () {
+        try {
+          _reactNative.AsyncStorage.getItem("userID").then(function (value) {
+            return _this.setState({
+              userID: value
+            });
+          });
+
+          console.log(_this.state.userID);
+        } catch (error) {
+          console.log(error);
+        }
+
+        _this.setState({
+          userID: value
+        });
+
+        if (_this.state.userID !== "") _this.getRooms();
       };
 
-      _this.getRooms();
+      _this.state = {
+        rooms: [],
+        userID: ""
+      };
+
+      try {
+        _reactNative.AsyncStorage.setItem("userID", exampleUser.id);
+      } catch (error) {
+        console.log(error);
+      }
 
       return _this;
     }
@@ -87,7 +112,7 @@ __d(function (global, require, module, exports, _dependencyMap) {
       value: function getRooms() {
         var _this2 = this;
 
-        return _axios2.default.get(baseURL + "Accounts/" + exampleUser.id + "/chambres_Accessibles").then(function (response) {
+        return _axios2.default.get(baseURL + "Accounts/" + this.state.userID + "/chambres_Accessibles").then(function (response) {
           _this2.setState({
             rooms: response.data
           });
@@ -114,13 +139,13 @@ __d(function (global, require, module, exports, _dependencyMap) {
                 index: parseInt(k, 10),
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 49
+                  lineNumber: 74
                 }
               });
             },
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 45
+              lineNumber: 70
             }
           });
         } else {
@@ -129,7 +154,7 @@ __d(function (global, require, module, exports, _dependencyMap) {
             size: "large",
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 54
+              lineNumber: 79
             }
           });
         }
@@ -144,7 +169,7 @@ __d(function (global, require, module, exports, _dependencyMap) {
         source: require(_dependencyMap[7], "./icons/home.png"),
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 25
+          lineNumber: 50
         }
       });
     }

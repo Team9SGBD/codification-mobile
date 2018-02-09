@@ -1,0 +1,142 @@
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react2 = require("react");
+
+var _react3 = _interopRequireDefault(_react2);
+
+var _index = require("./../../node_modules/react-transform-hmr/lib/index.js");
+
+var _index2 = _interopRequireDefault(_index);
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _class,
+    _temp,
+    _jsxFileName = "/Users/Papi/Documents/dev/React Native/codification/components/app/UpdateMail.js";
+
+var _reactNative = require("react-native");
+
+var _reactNavigation = require("react-navigation");
+
+var _Style = require("../../Style");
+
+var _Style2 = _interopRequireDefault(_Style);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var _components = {
+  UpdateMail: {
+    displayName: "UpdateMail"
+  }
+};
+
+var _node_modulesReactTransformHmrLibIndexJs2 = (0, _index2.default)({
+  filename: "/Users/Papi/Documents/dev/React Native/codification/components/app/UpdateMail.js",
+  components: _components,
+  locals: [module],
+  imports: [_react3.default]
+});
+
+function _wrapComponent(id) {
+  return function (Component) {
+    return _node_modulesReactTransformHmrLibIndexJs2(Component, id);
+  };
+}
+
+var UpdateMail = _wrapComponent("UpdateMail")((_temp = _class = function (_React$Component) {
+  _inherits(UpdateMail, _React$Component);
+
+  function UpdateMail(props) {
+    _classCallCheck(this, UpdateMail);
+
+    var _this = _possibleConstructorReturn(this, (UpdateMail.__proto__ || Object.getPrototypeOf(UpdateMail)).call(this, props));
+
+    _this.state = {
+      newMail: ""
+    };
+    return _this;
+  }
+
+  _createClass(UpdateMail, [{
+    key: "setMail",
+    value: function setMail(mail) {
+      this.setState({ newMail: mail });
+    }
+  }, {
+    key: "updateMail",
+    value: function updateMail() {
+      if (this.state.newMail.length > 0) console.log(this.state.newMail);
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this2 = this;
+
+      return _react3.default.createElement(
+        _reactNative.View,
+        { style: _Style2.default.view, __source: {
+            fileName: _jsxFileName,
+            lineNumber: 30
+          }
+        },
+        _react3.default.createElement(
+          _reactNative.Text,
+          { style: { color: _Style2.default.color }, __source: {
+              fileName: _jsxFileName,
+              lineNumber: 31
+            }
+          },
+          "Nouvelle adresse mail :"
+        ),
+        _react3.default.createElement(_reactNative.TextInput, {
+          placeholder: "Nouvelle adresse",
+          onChangeText: function onChangeText(newMail) {
+            return _this2.setMail(newMail);
+          },
+          onSubmitEditing: function onSubmitEditing() {
+            return _this2.updateMail();
+          },
+          keyboardType: "email-address",
+          value: this.state.newMail,
+          style: _Style2.default.textInput,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 32
+          }
+        }),
+        _react3.default.createElement(_reactNative.Button, {
+          style: { marginTop: 10 },
+          title: "Changer",
+          onPress: function onPress() {
+            return _this2.updateMail();
+          },
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 40
+          }
+        })
+      );
+    }
+  }]);
+
+  return UpdateMail;
+}(_react3.default.Component), _class.navigationOptions = {
+  title: "Modifier Mail",
+  tabBarIcon: function tabBarIcon() {
+    return _react3.default.createElement(_reactNative.Image, { source: require("./icons/settings.png"), __source: {
+        fileName: _jsxFileName,
+        lineNumber: 16
+      }
+    });
+  }
+}, _temp));
+
+exports.default = UpdateMail;

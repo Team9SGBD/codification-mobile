@@ -14,13 +14,23 @@ var _jsxFileName = "/Users/Papi/Documents/dev/React Native/codification/App.js";
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _reactNative = require("react-native");
+require("react-native");
 
 var _Home = require("./components/Home");
 
 var _Home2 = _interopRequireDefault(_Home);
 
-var _reactNavigation = require("react-navigation");
+var _Login = require("./components/Login");
+
+var _Login2 = _interopRequireDefault(_Login);
+
+var _Global = require("./components/app/Global");
+
+var _Global2 = _interopRequireDefault(_Global);
+
+var _MainService = require("./app/services/MainService");
+
+var _MainService2 = _interopRequireDefault(_MainService);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -55,28 +65,30 @@ var App = _wrapComponent("App")(function (_React$Component) {
   function App() {
     _classCallCheck(this, App);
 
-    return _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).apply(this, arguments));
+    var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this));
+
+    _this.state = {
+      loaded: false
+    };
+
+    _MainService2.default.load(function (v) {
+      return _this.setState({ loaded: true });
+    });
+    return _this;
   }
 
   _createClass(App, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      this.timeoutHandle = setTimeout(function () {
-        _reactNavigation.Navigator.Home;
-      }, 5000);
-    }
-  }, {
-    key: "componentWillUnmount",
-    value: function componentWillUnmount() {
-      clearTimeout(this.timeoutHandle);
-    }
-  }, {
     key: "render",
     value: function render() {
-      return _react3.default.createElement(_Home2.default, {
+      return this.state.loaded ? _react3.default.createElement(_Login2.default, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 20
+          lineNumber: 18
+        }
+      }) : _react3.default.createElement(_Home2.default, {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 18
         }
       });
     }
