@@ -136,14 +136,8 @@ __d(function (global, require, module, exports, _dependencyMap) {
     }, {
       key: "codifier",
       value: function codifier(room) {
-        var _this4 = this;
-
         return _axios2.default.get(baseURL + "Chambres/" + room.idchambre + "/reserverChambre?accountId=" + exampleUser.id).then(function () {
           console.log("reservation success");
-
-          _this4.setState({
-            reservedRoom: room
-          });
         }).catch(function (error) {
           return console.log(error);
         });
@@ -151,7 +145,7 @@ __d(function (global, require, module, exports, _dependencyMap) {
     }, {
       key: "render",
       value: function render() {
-        var _this5 = this;
+        var _this4 = this;
 
         var ds = new _reactNative.ListView.DataSource({
           rowHasChanged: function rowHasChanged(r1, r2) {
@@ -159,192 +153,35 @@ __d(function (global, require, module, exports, _dependencyMap) {
           }
         });
 
-        if (this.state.reservedRoom !== null) {
-          return _react3.default.createElement(
-            View,
-            {
-              style: {
-                flex: 1,
-                margin: 10,
-                alignItems: "center"
-              },
-              __source: {
-                fileName: _jsxFileName,
-                lineNumber: 95
-              }
+        if (this.state.rooms.length > 0) {
+          return _react3.default.createElement(_reactNative.ListView, {
+            enableEmptySections: true,
+            dataSource: ds.cloneWithRows(this.state.rooms),
+            renderRow: function renderRow(row, j, k) {
+              return _react3.default.createElement(_Row2.default, {
+                codifier: _this4.codifier,
+                room: row,
+                index: parseInt(k, 10),
+                __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 132
+                }
+              });
             },
-            _react3.default.createElement(
-              _reactNative.Text,
-              {
-                style: [_Style2.default.bold, {
-                  fontSize: 27,
-                  color: _Style2.default.color
-                }],
-                __source: {
-                  fileName: _jsxFileName,
-                  lineNumber: 96
-                }
-              },
-              "Chambre r\xE9serv\xE9e :"
-            ),
-            _react3.default.createElement(
-              View,
-              {
-                style: {
-                  flex: 1,
-                  flexDirection: "row"
-                },
-                __source: {
-                  fileName: _jsxFileName,
-                  lineNumber: 99
-                }
-              },
-              _react3.default.createElement(
-                _reactNative.Text,
-                {
-                  style: [_Style2.default.bold, {
-                    fontSize: 20,
-                    color: _Style2.default.color
-                  }],
-                  __source: {
-                    fileName: _jsxFileName,
-                    lineNumber: 100
-                  }
-                },
-                "Num\xE9ro de chambre :"
-              ),
-              _react3.default.createElement(
-                _reactNative.Text,
-                {
-                  style: {
-                    color: _Style2.default.color,
-                    fontSize: 17,
-                    marginLeft: 5
-                  },
-                  __source: {
-                    fileName: _jsxFileName,
-                    lineNumber: 103
-                  }
-                },
-                this.state.reservedRoom.numchambre
-              )
-            ),
-            _react3.default.createElement(
-              View,
-              {
-                style: {
-                  flex: 1,
-                  flexDirection: "row"
-                },
-                __source: {
-                  fileName: _jsxFileName,
-                  lineNumber: 107
-                }
-              },
-              _react3.default.createElement(
-                _reactNative.Text,
-                {
-                  style: [_Style2.default.bold, {
-                    fontSize: 20,
-                    color: _Style2.default.color
-                  }],
-                  __source: {
-                    fileName: _jsxFileName,
-                    lineNumber: 108
-                  }
-                },
-                "Batiment :"
-              ),
-              _react3.default.createElement(
-                _reactNative.Text,
-                {
-                  style: {
-                    color: _Style2.default.color,
-                    fontSize: 17,
-                    marginLeft: 5
-                  },
-                  __source: {
-                    fileName: _jsxFileName,
-                    lineNumber: 111
-                  }
-                },
-                this.state.reservedRoom.nombatiment
-              )
-            ),
-            _react3.default.createElement(
-              View,
-              {
-                style: {
-                  flex: 1,
-                  flexDirection: "row"
-                },
-                __source: {
-                  fileName: _jsxFileName,
-                  lineNumber: 115
-                }
-              },
-              _react3.default.createElement(
-                _reactNative.Text,
-                {
-                  style: [_Style2.default.bold, {
-                    fontSize: 20,
-                    color: _Style2.default.color
-                  }],
-                  __source: {
-                    fileName: _jsxFileName,
-                    lineNumber: 116
-                  }
-                },
-                "Etage :"
-              ),
-              _react3.default.createElement(
-                _reactNative.Text,
-                {
-                  style: {
-                    color: _Style2.default.color,
-                    fontSize: 17,
-                    marginLeft: 5
-                  },
-                  __source: {
-                    fileName: _jsxFileName,
-                    lineNumber: 119
-                  }
-                },
-                this.state.reservedRoom.numetage
-              )
-            )
-          );
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 128
+            }
+          });
         } else {
-          if (this.state.rooms.length > 0) {
-            return _react3.default.createElement(_reactNative.ListView, {
-              enableEmptySections: true,
-              dataSource: ds.cloneWithRows(this.state.rooms),
-              renderRow: function renderRow(row, j, k) {
-                return _react3.default.createElement(_Row2.default, {
-                  codifier: _this5.codifier,
-                  room: row,
-                  index: parseInt(k, 10),
-                  __source: {
-                    fileName: _jsxFileName,
-                    lineNumber: 132
-                  }
-                });
-              },
-              __source: {
-                fileName: _jsxFileName,
-                lineNumber: 128
-              }
-            });
-          } else {
-            return _react3.default.createElement(_reactNative.ActivityIndicator, {
-              color: _Style2.default.color,
-              size: "large",
-              __source: {
-                fileName: _jsxFileName,
-                lineNumber: 141
-              }
-            });
-          }
+          return _react3.default.createElement(_reactNative.ActivityIndicator, {
+            color: _Style2.default.color,
+            size: "large",
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 141
+            }
+          });
         }
       }
     }]);
@@ -357,7 +194,7 @@ __d(function (global, require, module, exports, _dependencyMap) {
         source: require(_dependencyMap[7], "./icons/home.png"),
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 52
+          lineNumber: 53
         }
       });
     }

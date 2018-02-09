@@ -45,25 +45,6 @@ __d(function (global, require, module, exports, _dependencyMap) {
     }
 
     _createClass(Login, [{
-      key: "_onSubmit",
-      value: function _onSubmit() {
-        var validation = {
-          email: {
-            email: true,
-            required: true
-          },
-          password: {
-            minlength: 8,
-            required: true
-          }
-        };
-        this.validate(validation);
-
-        if (this.isFormValid()) {
-          console.log("all good");
-        }
-      }
-    }, {
       key: "setEmail",
       value: function setEmail(email) {
         this.setState({
@@ -168,7 +149,9 @@ __d(function (global, require, module, exports, _dependencyMap) {
               }
             },
             _react2.default.createElement(_reactNative.Button, {
-              onPress: this._onSubmit,
+              onPress: function onPress() {
+                return _this2.props.connectUser();
+              },
               title: "Me connecter",
               __source: {
                 fileName: _jsxFileName,
@@ -184,7 +167,7 @@ __d(function (global, require, module, exports, _dependencyMap) {
             title: "Inscription",
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 65
+              lineNumber: 68
             }
           })
         );

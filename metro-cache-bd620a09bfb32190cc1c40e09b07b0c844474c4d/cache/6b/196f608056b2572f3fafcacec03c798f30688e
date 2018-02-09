@@ -15,7 +15,7 @@ __d(function (global, require, module, exports, _dependencyMap) {
 
   var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-  require(_dependencyMap[2], "react-native");
+  var _reactNative = require(_dependencyMap[2], "react-native");
 
   var _Home = require(_dependencyMap[3], "./components/Home");
 
@@ -60,16 +60,19 @@ __d(function (global, require, module, exports, _dependencyMap) {
     };
   }
 
+  var connectedUser = null;
+
   var App = _wrapComponent("App")(function (_React$Component) {
     _inherits(App, _React$Component);
 
-    function App() {
+    function App(props) {
       _classCallCheck(this, App);
 
-      var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this));
+      var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
 
       _this.state = {
-        loaded: false
+        loaded: false,
+        connectedUser: null
       };
 
       _MainService2.default.load(function (v) {
@@ -78,21 +81,58 @@ __d(function (global, require, module, exports, _dependencyMap) {
         });
       });
 
+      _reactNative.AsyncStorage.clear();
+
+      _reactNative.AsyncStorage.getItem("userID").then(function (value) {
+        return connectedUser = value;
+      });
+
+      console.log(connectedUser);
+      _this.forceUpdateHandler = _this.forceUpdateHandler.bind(_this);
       return _this;
     }
 
     _createClass(App, [{
+      key: "forceUpdateHandler",
+      value: function forceUpdateHandler() {
+        this.forceUpdate();
+      }
+    }, {
+      key: "connect",
+      value: function connect() {
+        connectedUser = "5a7496cd184ba90014a66345";
+
+        try {
+          _reactNative.AsyncStorage.setItem("userID", "5a7496cd184ba90014a66345");
+        } catch (error) {
+          console.log(error);
+        }
+
+        this.forceUpdateHandler();
+      }
+    }, {
       key: "render",
       value: function render() {
-        return this.state.loaded ? _react3.default.createElement(_Global2.default, {
+        if (connectedUser === null) return this.state.loaded ? _react3.default.createElement(_Login2.default, {
+          connectUser: this.connect,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 18
+            lineNumber: 41
           }
         }) : _react3.default.createElement(_Home2.default, {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 18
+            lineNumber: 43
+          }
+        });else return this.state.loaded ? _react3.default.createElement(_Global2.default, {
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 45
+          }
+        }) : _react3.default.createElement(_Home2.default, {
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 45
           }
         });
       }

@@ -116,20 +116,20 @@ __d(function (global, require, module, exports, _dependencyMap) {
             },
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 41
+              lineNumber: 43
             }
           },
           _react3.default.createElement(_reactNative.StatusBar, {
             hidden: true,
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 42
+              lineNumber: 44
             }
           }),
           _react3.default.createElement(Tabs, {
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 43
+              lineNumber: 45
             }
           })
         );

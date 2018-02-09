@@ -21,6 +21,10 @@ export default class UpdateMail extends React.Component {
     this.setState({ newMail: mail });
   }
 
+  /**
+   * Method= updateMail()
+   * Description= Permet de changer le mail
+   */
   updateMail() {
     if (this.state.newMail.length > 0) console.log(this.state.newMail);
   }

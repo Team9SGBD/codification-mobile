@@ -76,7 +76,7 @@ __d(function (global, require, module, exports, _dependencyMap) {
             style: style.view,
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 18
+              lineNumber: 23
             }
           },
           _react3.default.createElement(
@@ -88,7 +88,7 @@ __d(function (global, require, module, exports, _dependencyMap) {
               },
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 19
+                lineNumber: 24
               }
             },
             _react3.default.createElement(
@@ -97,7 +97,7 @@ __d(function (global, require, module, exports, _dependencyMap) {
                 style: [style.white, style.bold],
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 20
+                  lineNumber: 25
                 }
               },
               "Chambre ",
@@ -112,7 +112,7 @@ __d(function (global, require, module, exports, _dependencyMap) {
                 },
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 23
+                  lineNumber: 28
                 }
               },
               _react3.default.createElement(
@@ -121,7 +121,7 @@ __d(function (global, require, module, exports, _dependencyMap) {
                   style: style.white,
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 24
+                    lineNumber: 29
                   }
                 },
                 this.props.room.nombatiment
@@ -132,7 +132,7 @@ __d(function (global, require, module, exports, _dependencyMap) {
                   style: style.white,
                   __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 25
+                    lineNumber: 30
                   }
                 },
                 " - Etage ",
@@ -148,7 +148,7 @@ __d(function (global, require, module, exports, _dependencyMap) {
             color: "green",
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 28
+              lineNumber: 33
             }
           })
         );

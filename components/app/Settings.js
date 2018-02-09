@@ -17,20 +17,33 @@ class Settings extends React.Component {
     }
   };
 
+  /**
+   * Method= updateMail()
+   * Description= Permet de naviguer vers la page de changement de mail
+   */
   updateMail() {
     Keyboard.dismiss();
     this.props.navigation.navigate("UpdateMail");
   }
 
+  /**
+   * Method= updatePwd()
+   * Description= Permet de naviguer vers la page de changement de mot de passe
+   */
   updatePwd() {
     Keyboard.dismiss();
     this.props.navigation.navigate("UpdatePwd");
   }
 
+  /**
+   * Method= logout()
+   * Description= Permet de se déconnecter
+   */
   logout() {
     console.log("Deconnexion");
   }
 
+  //Affichage de la liste de paramètres
   render() {
     return (
       <View style={{ backgroundColor: "#f6f6f6", flex: 1 }}>

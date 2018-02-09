@@ -11,7 +11,7 @@ export default class Login extends ValidationComponent {
       password: ""
     };
   }
-
+  /*
   _onSubmit() {
     const validation = {
       email: { email: true, required: true },
@@ -22,7 +22,7 @@ export default class Login extends ValidationComponent {
     if (this.isFormValid()) {
       console.log("all good");
     }
-  }
+  } */
 
   setEmail(email) {
     this.setState({ email: email });
@@ -60,7 +60,10 @@ export default class Login extends ValidationComponent {
           {this.getErrorMessages()}
         </Text>
         <View style={{ margin: 7 }}>
-          <Button onPress={this._onSubmit} title="Me connecter" />
+          <Button
+            onPress={() => this.props.connectUser()}
+            title="Me connecter"
+          />
         </View>
         <Button
           onPress={this.goToRegister}

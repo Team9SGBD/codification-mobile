@@ -7,6 +7,7 @@ import { StatusBar, View, AsyncStorage } from "react-native";
 import { TabNavigator } from "react-navigation";
 import style from "../../Style";
 
+//Appel de toutes les pages
 const Tabs = TabNavigator(
   {
     RoomList: { screen: RoomList },
@@ -32,6 +33,7 @@ const Tabs = TabNavigator(
   }
 );
 
+//Chargement de la barre de navigation
 export default class App extends React.Component {
   constructor(props) {
     super(props);

@@ -29,6 +29,12 @@ export default class ReservationState extends React.Component {
     this.getReservation();
   };
 
+  /**
+   * Method= getReservation()
+   * Description= Permet de récupérer la réservation concernant
+   * l'utilisateur actuel
+   */
+
   getReservation() {
     return axios
       .get(`${baseURL}Accounts/${this.state.userId}/reservation`)
@@ -38,6 +44,10 @@ export default class ReservationState extends React.Component {
       .catch(response => console.log(response.statusCode));
   }
 
+  /**
+   * Method= confirmation()
+   * Description= Permet d'afficher Oui ou Non selon l'état de la réservation
+   */
   confirmation() {
     return this.state.reservation.confirmation ? (
       <Text style={{ color: style.color, fontSize: 17, marginLeft: 5 }}>
@@ -50,14 +60,24 @@ export default class ReservationState extends React.Component {
     );
   }
 
+  /**
+   * Method= annulerReservation()
+   * Description= Permet d'annuler une réservation
+   */
   annulerReservation() {
     console.log("annuler reservation");
   }
 
+  /**
+   * Method= confirmerReservation()
+   * Description= Permet de confirmer une réservation
+   */
   confirmerReservation() {
     console.log("confirmer reservation");
   }
 
+  //Affichage des informations liées à la réservation ou affichage du composant
+  //de chargement
   render() {
     if (this.state.reservation !== null) {
       return (

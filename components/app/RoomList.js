@@ -35,6 +35,7 @@ class RoomList extends React.Component {
     }
   }
 
+  //Récupération de la session de l'utilisateur
   componentDidMount = () => {
     try {
       AsyncStorage.getItem("userID").then(value =>
@@ -54,6 +55,10 @@ class RoomList extends React.Component {
     }
   };
 
+  /**
+   * Method= getReservedRoom()
+   * Description= Permet de récupérer la chambre réservée
+   */
   getReservedRoom() {
     return axios
       .get(`${baseURL}Accounts/${exampleUser.id}/reservation`)
@@ -63,6 +68,10 @@ class RoomList extends React.Component {
       .catch(error => console.log(error));
   }
 
+  /**
+   * Method= getRooms()
+   * Description= Permet de récupérer l'ensemble des chambres disponibles
+   */
   getRooms() {
     return axios
       .get(`${baseURL}Accounts/${this.state.userID}/chambres_Accessibles`)
@@ -72,6 +81,10 @@ class RoomList extends React.Component {
       .catch(error => console.log(error));
   }
 
+  /**
+   * Method= codifier()
+   * Description= Permet de réserver une chambre
+   */
   codifier(room) {
     return axios
       .get(
@@ -85,6 +98,7 @@ class RoomList extends React.Component {
       .catch(error => console.log(error));
   }
 
+  //Affichage des lignes correpondant aux différentes chambres
   render() {
     const ds = new ListView.DataSource({
       rowHasChanged: (r1, r2) => r1 !== r2

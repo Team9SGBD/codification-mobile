@@ -30,6 +30,10 @@ export default class UpdatePwd extends React.Component {
     });
   }
 
+  /**
+   * Method= updateMail()
+   * Description= Permet de changer le mot de passe
+   */
   updatePassword() {
     console.log(this.state.newPassword);
   }

@@ -89,7 +89,7 @@ __d(function (global, require, module, exports, _dependencyMap) {
             style: _Style2.default.view,
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 30
+              lineNumber: 34
             }
           },
           _react3.default.createElement(
@@ -100,7 +100,7 @@ __d(function (global, require, module, exports, _dependencyMap) {
               },
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 31
+                lineNumber: 35
               }
             },
             "Nouvelle adresse mail :"
@@ -118,7 +118,7 @@ __d(function (global, require, module, exports, _dependencyMap) {
             style: _Style2.default.textInput,
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 32
+              lineNumber: 36
             }
           }),
           _react3.default.createElement(_reactNative.Button, {
@@ -131,7 +131,7 @@ __d(function (global, require, module, exports, _dependencyMap) {
             },
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 40
+              lineNumber: 44
             }
           })
         );

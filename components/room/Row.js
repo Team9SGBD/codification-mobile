@@ -13,6 +13,11 @@ export default class Row extends React.Component {
     index: PropTypes.number
   };
 
+  /**
+   * Method= room()
+   * Description= Permet d'afficher les informations d'une chambre sur
+   * une ligne
+   */
   room() {
     return (
       <View style={style.view}>

@@ -106,7 +106,7 @@ __d(function (global, require, module, exports, _dependencyMap) {
             },
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 36
+              lineNumber: 49
             }
           },
           _react3.default.createElement(
@@ -118,7 +118,7 @@ __d(function (global, require, module, exports, _dependencyMap) {
               },
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 37
+                lineNumber: 50
               }
             },
             _react3.default.createElement(
@@ -128,7 +128,7 @@ __d(function (global, require, module, exports, _dependencyMap) {
                 defaultItemSize: 50,
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 38
+                  lineNumber: 51
                 }
               },
               _react3.default.createElement(_reactNativeSettingsList2.default.Item, {
@@ -138,7 +138,7 @@ __d(function (global, require, module, exports, _dependencyMap) {
                     style: styles.imageStyle,
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 41
+                      lineNumber: 54
                     }
                   },
                   _react3.default.createElement(_reactNative.Image, {
@@ -150,7 +150,7 @@ __d(function (global, require, module, exports, _dependencyMap) {
                     source: require(_dependencyMap[8], "./icons/account.png"),
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 42
+                      lineNumber: 55
                     }
                   })
                 ),
@@ -166,7 +166,7 @@ __d(function (global, require, module, exports, _dependencyMap) {
                 },
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 39
+                  lineNumber: 52
                 }
               }),
               _react3.default.createElement(_reactNativeSettingsList2.default.Item, {
@@ -176,7 +176,7 @@ __d(function (global, require, module, exports, _dependencyMap) {
                     style: styles.imageStyle,
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 56
+                      lineNumber: 69
                     }
                   },
                   _react3.default.createElement(_reactNative.Image, {
@@ -188,7 +188,7 @@ __d(function (global, require, module, exports, _dependencyMap) {
                     source: require(_dependencyMap[9], "./icons/lock.png"),
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 57
+                      lineNumber: 70
                     }
                   })
                 ),
@@ -204,7 +204,7 @@ __d(function (global, require, module, exports, _dependencyMap) {
                 },
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 54
+                  lineNumber: 67
                 }
               }),
               _react3.default.createElement(_reactNativeSettingsList2.default.Item, {
@@ -214,7 +214,7 @@ __d(function (global, require, module, exports, _dependencyMap) {
                     style: styles.imageStyle,
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 71
+                      lineNumber: 84
                     }
                   },
                   _react3.default.createElement(_reactNative.Image, {
@@ -226,7 +226,7 @@ __d(function (global, require, module, exports, _dependencyMap) {
                     source: require(_dependencyMap[10], "./icons/exit.png"),
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 72
+                      lineNumber: 85
                     }
                   })
                 ),
@@ -240,7 +240,7 @@ __d(function (global, require, module, exports, _dependencyMap) {
                 onPress: this.logout,
                 __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 69
+                  lineNumber: 82
                 }
               })
             )
